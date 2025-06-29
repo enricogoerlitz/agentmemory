@@ -1,0 +1,17 @@
+[project]
+name = "agentmemory"
+version = "0.1.0"
+description = "Package for managing agent memory in Python applications"
+readme = "README.md"
+authors = [
+    { name = "Enrico Goerlitz", email = "rico.goerlitz@gmail.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "pymongo>=4.13.2",
+    "requests>=2.32.4",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
