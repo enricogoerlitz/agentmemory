@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import Iterator
+from typing import List
 
 from agentmemory.schema.conversations import Conversation, ConversationItem
 from agentmemory.schema.personas import Persona
@@ -11,7 +11,7 @@ class LongtermMemoryConversationsSchemaInterface(ABC):
     def get(self, conversation_id: str) -> Conversation: pass
 
     @abstractmethod
-    def list(self, query: dict = None) -> Iterator[Conversation]: pass
+    def list(self, query: dict = None) -> List[Conversation]: pass
 
     @abstractmethod
     def create(self, conversation: Conversation) -> Conversation: pass
@@ -28,13 +28,13 @@ class LongtermMemoryConversationItemsSchemaInterface(ABC):
     def get(self, conversation_id: str, item_id: str) -> ConversationItem: pass
 
     @abstractmethod
-    def list(self, query: dict = None) -> Iterator[ConversationItem]: pass
+    def list(self, query: dict = None) -> List[ConversationItem]: pass
 
     @abstractmethod
-    def list_by_conversation_id(self, conversation_id: str, query: dict = None) -> Iterator[ConversationItem]: pass
+    def list_by_conversation_id(self, conversation_id: str, query: dict = None) -> List[ConversationItem]: pass
 
     @abstractmethod
-    def list_until_id_found(self, conversation_id: str, item_id: str) -> Iterator[ConversationItem]: pass
+    def list_until_id_found(self, conversation_id: str, item_id: str) -> List[ConversationItem]: pass
 
     @abstractmethod
     def create(self, item: ConversationItem) -> ConversationItem: pass
@@ -54,7 +54,7 @@ class LongtermMemoryPersonasSchemaInterface(ABC):
     def get_by_name(self, name: str) -> Persona: pass
 
     @abstractmethod
-    def list(self, query: dict = None) -> Iterator[Persona]: pass
+    def list(self, query: dict = None) -> List[Persona]: pass
 
     @abstractmethod
     def create(self, persona: Persona) -> Persona: pass
@@ -71,10 +71,10 @@ class LongtermMemoryWorkflowsSchemaInterface(ABC):
     def get(self, workflow_id: str) -> Workflow: pass
 
     @abstractmethod
-    def list(self, query: dict = None) -> Iterator[Workflow]: pass
+    def list(self, query: dict = None) -> List[Workflow]: pass
 
     @abstractmethod
-    def list_by_conversation_item_id(self, conversation_item_id: str, query: dict = None) -> Iterator[Workflow]: pass
+    def list_by_conversation_item_id(self, conversation_item_id: str, query: dict = None) -> List[Workflow]: pass
 
     @abstractmethod
     def create(self, workflow: Workflow) -> Workflow: pass
@@ -91,10 +91,10 @@ class LongtermMemoryWorkflowStepsSchemaInterface(ABC):
     def get(self, workflow_id: str, step_id: str) -> WorkflowStep: pass
 
     @abstractmethod
-    def list(self, query: dict = None) -> Iterator[WorkflowStep]: pass
+    def list(self, query: dict = None) -> List[WorkflowStep]: pass
 
     @abstractmethod
-    def list_by_workflow_id(self, workflow_id: str, query: dict = None) -> Iterator[WorkflowStep]: pass
+    def list_by_workflow_id(self, workflow_id: str, query: dict = None) -> List[WorkflowStep]: pass
 
     @abstractmethod
     def create(self, step: WorkflowStep) -> WorkflowStep: pass

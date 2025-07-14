@@ -1,4 +1,4 @@
-from typing import Iterator
+from typing import List
 from bson import ObjectId
 
 from pymongo.database import Database
@@ -27,15 +27,17 @@ class MongoDBWorkflowsSchema(LongtermMemoryWorkflowsSchemaInterface):
             raise ObjectNotFoundError(WORKFLOWS, workflow_id)
         return Workflow(**data)
 
-    def list(self, query: dict = None) -> Iterator[Workflow]:
+    def list(self, query: dict = None) -> List[Workflow]:
         query = query or {}
-        for data in self._col.find(query).sort("created_at", 1):
-            yield Workflow(**data)
+        return [
+            Workflow(**data)
+            for data in self._col.find(query).sort("created_at", 1)
+        ]
 
-    def list_by_conversation_item_id(self, conversation_item_id: str, query: dict = None) -> Iterator[Workflow]:
+    def list_by_conversation_item_id(self, conversation_item_id: str, query: dict = None) -> List[Workflow]:
         query = query or {}
         query["conversation_item_id"] = conversation_item_id
-        yield from self.list(query)
+        return self.list(query)
 
     def create(self, workflow: Workflow) -> Workflow:
         workflow._id = ObjectId()
@@ -70,15 +72,17 @@ class MongoDBWorkflowStepsSchema(LongtermMemoryWorkflowStepsSchemaInterface):
             raise ObjectNotFoundError(WORKFLOW_STEPS, (workflow_id, step_id))
         return WorkflowStep(**data)
 
-    def list(self, query: dict = None) -> Iterator[WorkflowStep]:
+    def list(self, query: dict = None) -> List[WorkflowStep]:
         query = query or {}
-        for data in self._col.find(query).sort("created_at", 1):
-            yield WorkflowStep(**data)
+        return [
+            WorkflowStep(**data)
+            for data in self._col.find(query).sort("created_at", 1)
+        ]
 
-    def list_by_workflow_id(self, workflow_id: str, query: dict = None) -> Iterator[WorkflowStep]:
+    def list_by_workflow_id(self, workflow_id: str, query: dict = None) -> List[WorkflowStep]:
         query = query or {}
         query[WORKFLOW_ID] = workflow_id
-        yield from self.list(query)
+        return self.list(query)
 
     def create(self, step: WorkflowStep) -> WorkflowStep:
         step._id = ObjectId()

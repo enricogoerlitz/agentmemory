@@ -1,4 +1,4 @@
-from typing import Iterator
+from typing import List, Iterator
 from bson import ObjectId
 
 from pymongo.database import Database
@@ -30,10 +30,12 @@ class MongoDBConversationsSchema(LongtermMemoryConversationsSchemaInterface):
             raise ObjectNotFoundError(CONVERSATIONS, conversation_id)
         return Conversation(**data)
 
-    def list(self, query: dict = None) -> Iterator[Conversation]:
+    def list(self, query: dict = None) -> List[Conversation]:
         query = query or {}
-        for data in self._col.find(query).sort("created_at", 1):
-            yield Conversation(**data)
+        return [
+            Conversation(**data)
+            for data in self._col.find(query).sort("created_at", 1)
+        ]
 
     def create(self, conversation: Conversation) -> Conversation:
         conversation._id = ObjectId()
@@ -68,17 +70,22 @@ class MongoDBConversationItemsSchema(LongtermMemoryConversationItemsSchemaInterf
             raise ObjectNotFoundError(CONVERSATION_ITEMS, (conversation_id, item_id))
         return ConversationItem(**data)
 
-    def list(self, query: dict = None) -> Iterator[ConversationItem]:
+    def list(self, query: dict = None) -> List[ConversationItem]:
         query = query or {}
-        for data in self._col.find(query).sort("created_at", 1):
-            yield ConversationItem(**data)
+        return [
+            ConversationItem(**data)
+            for data in self._col.find(query).sort("created_at", 1)
+        ]
 
-    def list_by_conversation_id(self, conversation_id: str, query: dict = None) -> Iterator[ConversationItem]:
+    def list_by_conversation_id(self, conversation_id: str, query: dict = None) -> List[ConversationItem]:
         query = query or {}
         query[CONVERSATION_ID] = conversation_id
-        yield from self.list(query)
+        return self.list(query)
 
-    def list_until_id_found(self, conversation_id: str, item_id: str) -> Iterator[ConversationItem]:
+    def list_until_id_found(self, conversation_id: str, item_id: str) -> List[ConversationItem]:
+        return [data for data in self._list_until_id_found(conversation_id, item_id)]
+
+    def _list_until_id_found(self, conversation_id: str, item_id: str) -> Iterator[ConversationItem]:
         query = {CONVERSATION_ID: conversation_id}
         for data in self._col.find(query).sort("created_at", 1):
             yield ConversationItem(**data)

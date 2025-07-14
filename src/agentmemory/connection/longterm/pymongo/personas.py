@@ -1,4 +1,4 @@
-from typing import Iterator
+from typing import List
 from bson import ObjectId
 
 from pymongo.database import Database
@@ -31,10 +31,12 @@ class MongoDBPersonasSchema(LongtermMemoryPersonasSchemaInterface):
             raise ObjectNotFoundError(PERSONAS, name)
         return Persona(**data)
 
-    def list(self, query: dict = None) -> Iterator[Persona]:
+    def list(self, query: dict = None) -> List[Persona]:
         query = query or {}
-        for data in self._col.find(query).sort("created_at", 1):
-            yield Persona(**data)
+        return [
+            Persona(**data)
+            for data in self._col.find(query).sort("created_at", 1)
+        ]
 
     def create(self, persona: Persona) -> Persona:
         persona._id = ObjectId()
