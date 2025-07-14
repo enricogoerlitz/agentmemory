@@ -1,5 +1,7 @@
 from agentmemory.connection.connection import AgentMemoryConnection
 from agentmemory.memory.conversations import Conversations, ConversationItems
+from agentmemory.memory.personas import Personas
+from agentmemory.memory.workflows import Workflows, WorkflowSteps
 
 
 class AgentMemory:
@@ -12,6 +14,9 @@ class AgentMemory:
         self._con = con
         self._conversations = Conversations(con=con)
         self._conversation_items = ConversationItems(con=con)
+        self._personas = Personas(con=con)
+        self._workflows = Workflows(con=con)
+        self._workflow_steps = WorkflowSteps(con=con)
 
     @property
     def name(self) -> str:
@@ -28,3 +33,15 @@ class AgentMemory:
     @property
     def conversation_items(self) -> ConversationItems:
         return self._conversation_items
+
+    @property
+    def personas(self) -> Personas:
+        return self._personas
+
+    @property
+    def workflows(self) -> Workflows:
+        return self._workflows
+
+    @property
+    def workflow_steps(self) -> WorkflowSteps:
+        return self._workflow_steps

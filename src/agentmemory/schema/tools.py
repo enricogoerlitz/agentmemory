@@ -2,19 +2,18 @@ from dataclasses import dataclass, field, asdict
 from typing import Any, Optional
 
 from agentmemory.utils.dataclasses.default_factory_functions import (
-    current_iso_datetime, uuid
+    current_iso_datetime, uuid, empty_dict
 )
 
 
 @dataclass
-class Persona:
+class Tool:
     name: str
-    role: str
-    goals: str
-    background: str
+    description: str
+    parameters: dict
     _id: Optional[Any] = None
-    persona_id: str = field(default_factory=uuid)
-    embedding: Optional[list[float]] = None
+    tool_id: str = field(default_factory=uuid)
+    data: dict = field(default_factory=empty_dict)
     created_at: str = field(default_factory=current_iso_datetime)
     updated_at: str = field(default_factory=current_iso_datetime)
 

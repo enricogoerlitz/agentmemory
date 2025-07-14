@@ -2,20 +2,22 @@ from abc import ABC, abstractmethod
 from typing import Iterator
 
 from agentmemory.schema.conversations import Conversation, ConversationItem
+from agentmemory.schema.personas import Persona
+from agentmemory.schema.workflows import Workflow, WorkflowStep
 
 
 class LongtermMemoryConversationsSchemaInterface(ABC):
     @abstractmethod
-    def get(self, conversation_id: str, cache_cnf: str = None) -> Conversation: pass
+    def get(self, conversation_id: str) -> Conversation: pass
 
     @abstractmethod
-    def list(self, query: dict = None, cache_cnf: str = None) -> Iterator[Conversation]: pass
+    def list(self, query: dict = None) -> Iterator[Conversation]: pass
 
     @abstractmethod
-    def create(self, conversation_id: str, title: str, metadata: dict) -> Conversation: pass
+    def create(self, conversation: Conversation) -> Conversation: pass
 
     @abstractmethod
-    def update(self, conversation_id: str, title: str = None, metadata: dict = None) -> Conversation: pass
+    def update(self, conversation_id: str, update_data: dict) -> None: pass
 
     @abstractmethod
     def delete(self, conversation_id: str, cascade: bool) -> None: pass
@@ -23,22 +25,85 @@ class LongtermMemoryConversationsSchemaInterface(ABC):
 
 class LongtermMemoryConversationItemsSchemaInterface(ABC):
     @abstractmethod
-    def get(self, conversation_id: str, item_id: str, cache_cnf: str = None) -> ConversationItem: pass
+    def get(self, conversation_id: str, item_id: str) -> ConversationItem: pass
 
     @abstractmethod
-    def list(self, conversation_id: str, query: dict = None, cache_cnf: str = None) -> Iterator[ConversationItem]: pass
+    def list(self, query: dict = None) -> Iterator[ConversationItem]: pass
 
     @abstractmethod
-    def list_until_id_found(self, conversation_id: str, item_id: str, cache_cnf: str = None) -> Iterator[ConversationItem]: pass
+    def list_by_conversation_id(self, conversation_id: str, query: dict = None) -> Iterator[ConversationItem]: pass
+
+    @abstractmethod
+    def list_until_id_found(self, conversation_id: str, item_id: str) -> Iterator[ConversationItem]: pass
 
     @abstractmethod
     def create(self, item: ConversationItem) -> ConversationItem: pass
 
     @abstractmethod
-    def update(self, item: ConversationItem) -> ConversationItem: pass
+    def update(self, conversation_id: str, item_id: str, update_data: dict) -> None: pass
 
     @abstractmethod
     def delete(self, conversation_id: str, item_id: str) -> None: pass
+
+
+class LongtermMemoryPersonasSchemaInterface(ABC):
+    @abstractmethod
+    def get(self, persona_id: str) -> Persona: pass
+
+    @abstractmethod
+    def get_by_name(self, name: str) -> Persona: pass
+
+    @abstractmethod
+    def list(self, query: dict = None) -> Iterator[Persona]: pass
+
+    @abstractmethod
+    def create(self, persona: Persona) -> Persona: pass
+
+    @abstractmethod
+    def update(self, persona_id: str, update_data: dict) -> None: pass
+
+    @abstractmethod
+    def delete(self, persona_id: str) -> None: pass
+
+
+class LongtermMemoryWorkflowsSchemaInterface(ABC):
+    @abstractmethod
+    def get(self, workflow_id: str) -> Workflow: pass
+
+    @abstractmethod
+    def list(self, query: dict = None) -> Iterator[Workflow]: pass
+
+    @abstractmethod
+    def list_by_conversation_item_id(self, conversation_item_id: str, query: dict = None) -> Iterator[Workflow]: pass
+
+    @abstractmethod
+    def create(self, workflow: Workflow) -> Workflow: pass
+
+    @abstractmethod
+    def update(self, workflow_id: str, update_data: dict) -> None: pass
+
+    @abstractmethod
+    def delete(self, workflow_id: str, cascade: bool) -> None: pass
+
+
+class LongtermMemoryWorkflowStepsSchemaInterface(ABC):
+    @abstractmethod
+    def get(self, workflow_id: str, step_id: str) -> WorkflowStep: pass
+
+    @abstractmethod
+    def list(self, query: dict = None) -> Iterator[WorkflowStep]: pass
+
+    @abstractmethod
+    def list_by_workflow_id(self, workflow_id: str, query: dict = None) -> Iterator[WorkflowStep]: pass
+
+    @abstractmethod
+    def create(self, step: WorkflowStep) -> WorkflowStep: pass
+
+    @abstractmethod
+    def update(self, workflow_id: str, step_id: str, update_data: dict) -> WorkflowStep: pass
+
+    @abstractmethod
+    def delete(self, workflow_id: str, step_id: str) -> None: pass
 
 
 class LongtermMemoryConnectionInterface(ABC):
@@ -47,3 +112,12 @@ class LongtermMemoryConnectionInterface(ABC):
 
     @abstractmethod
     def conversation_items(self) -> LongtermMemoryConversationItemsSchemaInterface: pass
+
+    @abstractmethod
+    def personas(self) -> LongtermMemoryPersonasSchemaInterface: pass
+
+    @abstractmethod
+    def workflows(self) -> LongtermMemoryWorkflowsSchemaInterface: pass
+
+    @abstractmethod
+    def workflow_steps(self) -> LongtermMemoryWorkflowStepsSchemaInterface: pass

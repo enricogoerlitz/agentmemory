@@ -7,6 +7,13 @@ from agentmemory.connection.longterm.pymongo.conversations import (
     MongoDBConversationsSchema,
     MongoDBConversationItemsSchema
 )
+from agentmemory.connection.longterm.pymongo.personas import (
+    MongoDBPersonasSchema
+)
+from agentmemory.connection.longterm.pymongo.workflows import (
+    MongoDBWorkflowsSchema,
+    MongoDBWorkflowStepsSchema
+)
 
 
 class MongoDBConnection(LongtermMemoryConnectionInterface):
@@ -17,9 +24,21 @@ class MongoDBConnection(LongtermMemoryConnectionInterface):
 
         self._conversations = MongoDBConversationsSchema(self._db)
         self._conversation_items = MongoDBConversationItemsSchema(self._db)
+        self._personas = MongoDBPersonasSchema(self._db)
+        self._workflows = MongoDBWorkflowsSchema(self._db)
+        self._workflow_steps = MongoDBWorkflowStepsSchema(self._db)
 
     def conversations(self) -> MongoDBConversationsSchema:
         return self._conversations
 
     def conversation_items(self) -> MongoDBConversationItemsSchema:
         return self._conversation_items
+
+    def personas(self) -> MongoDBPersonasSchema:
+        return self._personas
+
+    def workflows(self) -> MongoDBWorkflowsSchema:
+        return self._workflows
+
+    def workflow_steps(self) -> MongoDBWorkflowStepsSchema:
+        return self._workflow_steps

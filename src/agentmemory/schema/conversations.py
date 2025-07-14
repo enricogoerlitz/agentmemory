@@ -11,7 +11,7 @@ class Conversation:
     title: str
     _id: Optional[Any] = None
     conversation_id: str = field(default_factory=uuid)
-    metadata: dict = field(default_factory=empty_dict)
+    data: dict = field(default_factory=empty_dict)
     created_at: str = field(default_factory=current_iso_datetime)
     updated_at: str = field(default_factory=current_iso_datetime)
 
@@ -26,7 +26,7 @@ class ConversationItem:
     content: str
     _id: Optional[Any] = None
     item_id: str = field(default_factory=uuid)
-    metadata: dict = field(default_factory=empty_dict)
+    data: dict = field(default_factory=empty_dict)
     created_at: str = field(default_factory=current_iso_datetime)
     updated_at: str = field(default_factory=current_iso_datetime)
 

@@ -1,0 +1,1479 @@
+[
+    {
+        "label": "runpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "runpy",
+        "description": "runpy",
+        "detail": "runpy",
+        "documentation": {}
+    },
+    {
+        "label": "annotations",
+        "importPath": "__future__",
+        "description": "__future__",
+        "isExtraImport": true,
+        "detail": "__future__",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "site",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "site",
+        "description": "site",
+        "detail": "site",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "MongoClient",
+        "importPath": "pymongo",
+        "description": "pymongo",
+        "isExtraImport": true,
+        "detail": "pymongo",
+        "documentation": {}
+    },
+    {
+        "label": "LongtermMemoryConnectionInterface",
+        "importPath": "agentmemory.connection.longterm.interface",
+        "description": "agentmemory.connection.longterm.interface",
+        "isExtraImport": true,
+        "detail": "agentmemory.connection.longterm.interface",
+        "documentation": {}
+    },
+    {
+        "label": "LongtermMemoryConversationsSchemaInterface",
+        "importPath": "agentmemory.connection.longterm.interface",
+        "description": "agentmemory.connection.longterm.interface",
+        "isExtraImport": true,
+        "detail": "agentmemory.connection.longterm.interface",
+        "documentation": {}
+    },
+    {
+        "label": "LongtermMemoryConversationItemsSchemaInterface",
+        "importPath": "agentmemory.connection.longterm.interface",
+        "description": "agentmemory.connection.longterm.interface",
+        "isExtraImport": true,
+        "detail": "agentmemory.connection.longterm.interface",
+        "documentation": {}
+    },
+    {
+        "label": "LongtermMemoryPersonasSchemaInterface",
+        "importPath": "agentmemory.connection.longterm.interface",
+        "description": "agentmemory.connection.longterm.interface",
+        "isExtraImport": true,
+        "detail": "agentmemory.connection.longterm.interface",
+        "documentation": {}
+    },
+    {
+        "label": "LongtermMemoryWorkflowsSchemaInterface",
+        "importPath": "agentmemory.connection.longterm.interface",
+        "description": "agentmemory.connection.longterm.interface",
+        "isExtraImport": true,
+        "detail": "agentmemory.connection.longterm.interface",
+        "documentation": {}
+    },
+    {
+        "label": "LongtermMemoryWorkflowStepsSchemaInterface",
+        "importPath": "agentmemory.connection.longterm.interface",
+        "description": "agentmemory.connection.longterm.interface",
+        "isExtraImport": true,
+        "detail": "agentmemory.connection.longterm.interface",
+        "documentation": {}
+    },
+    {
+        "label": "LongtermMemoryConnectionInterface",
+        "importPath": "agentmemory.connection.longterm.interface",
+        "description": "agentmemory.connection.longterm.interface",
+        "isExtraImport": true,
+        "detail": "agentmemory.connection.longterm.interface",
+        "documentation": {}
+    },
+    {
+        "label": "MongoDBConversationsSchema",
+        "importPath": "agentmemory.connection.longterm.pymongo.conversations",
+        "description": "agentmemory.connection.longterm.pymongo.conversations",
+        "isExtraImport": true,
+        "detail": "agentmemory.connection.longterm.pymongo.conversations",
+        "documentation": {}
+    },
+    {
+        "label": "MongoDBConversationItemsSchema",
+        "importPath": "agentmemory.connection.longterm.pymongo.conversations",
+        "description": "agentmemory.connection.longterm.pymongo.conversations",
+        "isExtraImport": true,
+        "detail": "agentmemory.connection.longterm.pymongo.conversations",
+        "documentation": {}
+    },
+    {
+        "label": "MongoDBPersonasSchema",
+        "importPath": "agentmemory.connection.longterm.pymongo.personas",
+        "description": "agentmemory.connection.longterm.pymongo.personas",
+        "isExtraImport": true,
+        "detail": "agentmemory.connection.longterm.pymongo.personas",
+        "documentation": {}
+    },
+    {
+        "label": "MongoDBWorkflowsSchema",
+        "importPath": "agentmemory.connection.longterm.pymongo.workflows",
+        "description": "agentmemory.connection.longterm.pymongo.workflows",
+        "isExtraImport": true,
+        "detail": "agentmemory.connection.longterm.pymongo.workflows",
+        "documentation": {}
+    },
+    {
+        "label": "MongoDBWorkflowStepsSchema",
+        "importPath": "agentmemory.connection.longterm.pymongo.workflows",
+        "description": "agentmemory.connection.longterm.pymongo.workflows",
+        "isExtraImport": true,
+        "detail": "agentmemory.connection.longterm.pymongo.workflows",
+        "documentation": {}
+    },
+    {
+        "label": "Iterator",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Iterator",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Iterator",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Iterator",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Type",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Iterator",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Iterator",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Iterator",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Type",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "ObjectId",
+        "importPath": "bson",
+        "description": "bson",
+        "isExtraImport": true,
+        "detail": "bson",
+        "documentation": {}
+    },
+    {
+        "label": "ObjectId",
+        "importPath": "bson",
+        "description": "bson",
+        "isExtraImport": true,
+        "detail": "bson",
+        "documentation": {}
+    },
+    {
+        "label": "ObjectId",
+        "importPath": "bson",
+        "description": "bson",
+        "isExtraImport": true,
+        "detail": "bson",
+        "documentation": {}
+    },
+    {
+        "label": "Database",
+        "importPath": "pymongo.database",
+        "description": "pymongo.database",
+        "isExtraImport": true,
+        "detail": "pymongo.database",
+        "documentation": {}
+    },
+    {
+        "label": "Database",
+        "importPath": "pymongo.database",
+        "description": "pymongo.database",
+        "isExtraImport": true,
+        "detail": "pymongo.database",
+        "documentation": {}
+    },
+    {
+        "label": "Database",
+        "importPath": "pymongo.database",
+        "description": "pymongo.database",
+        "isExtraImport": true,
+        "detail": "pymongo.database",
+        "documentation": {}
+    },
+    {
+        "label": "ObjectNotFoundError",
+        "importPath": "agentmemory.exc.errors",
+        "description": "agentmemory.exc.errors",
+        "isExtraImport": true,
+        "detail": "agentmemory.exc.errors",
+        "documentation": {}
+    },
+    {
+        "label": "ObjectNotUpdatedError",
+        "importPath": "agentmemory.exc.errors",
+        "description": "agentmemory.exc.errors",
+        "isExtraImport": true,
+        "detail": "agentmemory.exc.errors",
+        "documentation": {}
+    },
+    {
+        "label": "ObjectNotUpdatedError",
+        "importPath": "agentmemory.exc.errors",
+        "description": "agentmemory.exc.errors",
+        "isExtraImport": true,
+        "detail": "agentmemory.exc.errors",
+        "documentation": {}
+    },
+    {
+        "label": "ObjectNotFoundError",
+        "importPath": "agentmemory.exc.errors",
+        "description": "agentmemory.exc.errors",
+        "isExtraImport": true,
+        "detail": "agentmemory.exc.errors",
+        "documentation": {}
+    },
+    {
+        "label": "ObjectNotUpdatedError",
+        "importPath": "agentmemory.exc.errors",
+        "description": "agentmemory.exc.errors",
+        "isExtraImport": true,
+        "detail": "agentmemory.exc.errors",
+        "documentation": {}
+    },
+    {
+        "label": "ObjectNotFoundError",
+        "importPath": "agentmemory.exc.errors",
+        "description": "agentmemory.exc.errors",
+        "isExtraImport": true,
+        "detail": "agentmemory.exc.errors",
+        "documentation": {}
+    },
+    {
+        "label": "InstanceTypeError",
+        "importPath": "agentmemory.exc.errors",
+        "description": "agentmemory.exc.errors",
+        "isExtraImport": true,
+        "detail": "agentmemory.exc.errors",
+        "documentation": {}
+    },
+    {
+        "label": "CONVERSATIONS",
+        "importPath": "agentmemory.connection.longterm.collections",
+        "description": "agentmemory.connection.longterm.collections",
+        "isExtraImport": true,
+        "detail": "agentmemory.connection.longterm.collections",
+        "documentation": {}
+    },
+    {
+        "label": "CONVERSATION_ITEMS",
+        "importPath": "agentmemory.connection.longterm.collections",
+        "description": "agentmemory.connection.longterm.collections",
+        "isExtraImport": true,
+        "detail": "agentmemory.connection.longterm.collections",
+        "documentation": {}
+    },
+    {
+        "label": "PERSONAS",
+        "importPath": "agentmemory.connection.longterm.collections",
+        "description": "agentmemory.connection.longterm.collections",
+        "isExtraImport": true,
+        "detail": "agentmemory.connection.longterm.collections",
+        "documentation": {}
+    },
+    {
+        "label": "WORKFLOWS",
+        "importPath": "agentmemory.connection.longterm.collections",
+        "description": "agentmemory.connection.longterm.collections",
+        "isExtraImport": true,
+        "detail": "agentmemory.connection.longterm.collections",
+        "documentation": {}
+    },
+    {
+        "label": "WORKFLOW_STEPS",
+        "importPath": "agentmemory.connection.longterm.collections",
+        "description": "agentmemory.connection.longterm.collections",
+        "isExtraImport": true,
+        "detail": "agentmemory.connection.longterm.collections",
+        "documentation": {}
+    },
+    {
+        "label": "Conversation",
+        "importPath": "agentmemory.schema.conversations",
+        "description": "agentmemory.schema.conversations",
+        "isExtraImport": true,
+        "detail": "agentmemory.schema.conversations",
+        "documentation": {}
+    },
+    {
+        "label": "ConversationItem",
+        "importPath": "agentmemory.schema.conversations",
+        "description": "agentmemory.schema.conversations",
+        "isExtraImport": true,
+        "detail": "agentmemory.schema.conversations",
+        "documentation": {}
+    },
+    {
+        "label": "Conversation",
+        "importPath": "agentmemory.schema.conversations",
+        "description": "agentmemory.schema.conversations",
+        "isExtraImport": true,
+        "detail": "agentmemory.schema.conversations",
+        "documentation": {}
+    },
+    {
+        "label": "ConversationItem",
+        "importPath": "agentmemory.schema.conversations",
+        "description": "agentmemory.schema.conversations",
+        "isExtraImport": true,
+        "detail": "agentmemory.schema.conversations",
+        "documentation": {}
+    },
+    {
+        "label": "Conversation",
+        "importPath": "agentmemory.schema.conversations",
+        "description": "agentmemory.schema.conversations",
+        "isExtraImport": true,
+        "detail": "agentmemory.schema.conversations",
+        "documentation": {}
+    },
+    {
+        "label": "ConversationItem",
+        "importPath": "agentmemory.schema.conversations",
+        "description": "agentmemory.schema.conversations",
+        "isExtraImport": true,
+        "detail": "agentmemory.schema.conversations",
+        "documentation": {}
+    },
+    {
+        "label": "Persona",
+        "importPath": "agentmemory.schema.personas",
+        "description": "agentmemory.schema.personas",
+        "isExtraImport": true,
+        "detail": "agentmemory.schema.personas",
+        "documentation": {}
+    },
+    {
+        "label": "Persona",
+        "importPath": "agentmemory.schema.personas",
+        "description": "agentmemory.schema.personas",
+        "isExtraImport": true,
+        "detail": "agentmemory.schema.personas",
+        "documentation": {}
+    },
+    {
+        "label": "Persona",
+        "importPath": "agentmemory.schema.personas",
+        "description": "agentmemory.schema.personas",
+        "isExtraImport": true,
+        "detail": "agentmemory.schema.personas",
+        "documentation": {}
+    },
+    {
+        "label": "Workflow",
+        "importPath": "agentmemory.schema.workflows",
+        "description": "agentmemory.schema.workflows",
+        "isExtraImport": true,
+        "detail": "agentmemory.schema.workflows",
+        "documentation": {}
+    },
+    {
+        "label": "WorkflowStep",
+        "importPath": "agentmemory.schema.workflows",
+        "description": "agentmemory.schema.workflows",
+        "isExtraImport": true,
+        "detail": "agentmemory.schema.workflows",
+        "documentation": {}
+    },
+    {
+        "label": "Workflow",
+        "importPath": "agentmemory.schema.workflows",
+        "description": "agentmemory.schema.workflows",
+        "isExtraImport": true,
+        "detail": "agentmemory.schema.workflows",
+        "documentation": {}
+    },
+    {
+        "label": "WorkflowStep",
+        "importPath": "agentmemory.schema.workflows",
+        "description": "agentmemory.schema.workflows",
+        "isExtraImport": true,
+        "detail": "agentmemory.schema.workflows",
+        "documentation": {}
+    },
+    {
+        "label": "Workflow",
+        "importPath": "agentmemory.schema.workflows",
+        "description": "agentmemory.schema.workflows",
+        "isExtraImport": true,
+        "detail": "agentmemory.schema.workflows",
+        "documentation": {}
+    },
+    {
+        "label": "WorkflowStep",
+        "importPath": "agentmemory.schema.workflows",
+        "description": "agentmemory.schema.workflows",
+        "isExtraImport": true,
+        "detail": "agentmemory.schema.workflows",
+        "documentation": {}
+    },
+    {
+        "label": "ABC",
+        "importPath": "abc",
+        "description": "abc",
+        "isExtraImport": true,
+        "detail": "abc",
+        "documentation": {}
+    },
+    {
+        "label": "abstractmethod",
+        "importPath": "abc",
+        "description": "abc",
+        "isExtraImport": true,
+        "detail": "abc",
+        "documentation": {}
+    },
+    {
+        "label": "AgentMemoryConnection",
+        "importPath": "agentmemory.connection.connection",
+        "description": "agentmemory.connection.connection",
+        "isExtraImport": true,
+        "detail": "agentmemory.connection.connection",
+        "documentation": {}
+    },
+    {
+        "label": "AgentMemoryConnection",
+        "importPath": "agentmemory.connection.connection",
+        "description": "agentmemory.connection.connection",
+        "isExtraImport": true,
+        "detail": "agentmemory.connection.connection",
+        "documentation": {}
+    },
+    {
+        "label": "AgentMemoryConnection",
+        "importPath": "agentmemory.connection.connection",
+        "description": "agentmemory.connection.connection",
+        "isExtraImport": true,
+        "detail": "agentmemory.connection.connection",
+        "documentation": {}
+    },
+    {
+        "label": "AgentMemoryConnection",
+        "importPath": "agentmemory.connection.connection",
+        "description": "agentmemory.connection.connection",
+        "isExtraImport": true,
+        "detail": "agentmemory.connection.connection",
+        "documentation": {}
+    },
+    {
+        "label": "current_iso_datetime",
+        "importPath": "agentmemory.utils.dataclasses.default_factory_functions",
+        "description": "agentmemory.utils.dataclasses.default_factory_functions",
+        "isExtraImport": true,
+        "detail": "agentmemory.utils.dataclasses.default_factory_functions",
+        "documentation": {}
+    },
+    {
+        "label": "current_iso_datetime",
+        "importPath": "agentmemory.utils.dataclasses.default_factory_functions",
+        "description": "agentmemory.utils.dataclasses.default_factory_functions",
+        "isExtraImport": true,
+        "detail": "agentmemory.utils.dataclasses.default_factory_functions",
+        "documentation": {}
+    },
+    {
+        "label": "current_iso_datetime",
+        "importPath": "agentmemory.utils.dataclasses.default_factory_functions",
+        "description": "agentmemory.utils.dataclasses.default_factory_functions",
+        "isExtraImport": true,
+        "detail": "agentmemory.utils.dataclasses.default_factory_functions",
+        "documentation": {}
+    },
+    {
+        "label": "current_iso_datetime",
+        "importPath": "agentmemory.utils.dataclasses.default_factory_functions",
+        "description": "agentmemory.utils.dataclasses.default_factory_functions",
+        "isExtraImport": true,
+        "detail": "agentmemory.utils.dataclasses.default_factory_functions",
+        "documentation": {}
+    },
+    {
+        "label": "uuid",
+        "importPath": "agentmemory.utils.dataclasses.default_factory_functions",
+        "description": "agentmemory.utils.dataclasses.default_factory_functions",
+        "isExtraImport": true,
+        "detail": "agentmemory.utils.dataclasses.default_factory_functions",
+        "documentation": {}
+    },
+    {
+        "label": "empty_dict",
+        "importPath": "agentmemory.utils.dataclasses.default_factory_functions",
+        "description": "agentmemory.utils.dataclasses.default_factory_functions",
+        "isExtraImport": true,
+        "detail": "agentmemory.utils.dataclasses.default_factory_functions",
+        "documentation": {}
+    },
+    {
+        "label": "current_iso_datetime",
+        "importPath": "agentmemory.utils.dataclasses.default_factory_functions",
+        "description": "agentmemory.utils.dataclasses.default_factory_functions",
+        "isExtraImport": true,
+        "detail": "agentmemory.utils.dataclasses.default_factory_functions",
+        "documentation": {}
+    },
+    {
+        "label": "uuid",
+        "importPath": "agentmemory.utils.dataclasses.default_factory_functions",
+        "description": "agentmemory.utils.dataclasses.default_factory_functions",
+        "isExtraImport": true,
+        "detail": "agentmemory.utils.dataclasses.default_factory_functions",
+        "documentation": {}
+    },
+    {
+        "label": "empty_dict",
+        "importPath": "agentmemory.utils.dataclasses.default_factory_functions",
+        "description": "agentmemory.utils.dataclasses.default_factory_functions",
+        "isExtraImport": true,
+        "detail": "agentmemory.utils.dataclasses.default_factory_functions",
+        "documentation": {}
+    },
+    {
+        "label": "current_iso_datetime",
+        "importPath": "agentmemory.utils.dataclasses.default_factory_functions",
+        "description": "agentmemory.utils.dataclasses.default_factory_functions",
+        "isExtraImport": true,
+        "detail": "agentmemory.utils.dataclasses.default_factory_functions",
+        "documentation": {}
+    },
+    {
+        "label": "uuid",
+        "importPath": "agentmemory.utils.dataclasses.default_factory_functions",
+        "description": "agentmemory.utils.dataclasses.default_factory_functions",
+        "isExtraImport": true,
+        "detail": "agentmemory.utils.dataclasses.default_factory_functions",
+        "documentation": {}
+    },
+    {
+        "label": "current_iso_datetime",
+        "importPath": "agentmemory.utils.dataclasses.default_factory_functions",
+        "description": "agentmemory.utils.dataclasses.default_factory_functions",
+        "isExtraImport": true,
+        "detail": "agentmemory.utils.dataclasses.default_factory_functions",
+        "documentation": {}
+    },
+    {
+        "label": "uuid",
+        "importPath": "agentmemory.utils.dataclasses.default_factory_functions",
+        "description": "agentmemory.utils.dataclasses.default_factory_functions",
+        "isExtraImport": true,
+        "detail": "agentmemory.utils.dataclasses.default_factory_functions",
+        "documentation": {}
+    },
+    {
+        "label": "empty_dict",
+        "importPath": "agentmemory.utils.dataclasses.default_factory_functions",
+        "description": "agentmemory.utils.dataclasses.default_factory_functions",
+        "isExtraImport": true,
+        "detail": "agentmemory.utils.dataclasses.default_factory_functions",
+        "documentation": {}
+    },
+    {
+        "label": "current_iso_datetime",
+        "importPath": "agentmemory.utils.dataclasses.default_factory_functions",
+        "description": "agentmemory.utils.dataclasses.default_factory_functions",
+        "isExtraImport": true,
+        "detail": "agentmemory.utils.dataclasses.default_factory_functions",
+        "documentation": {}
+    },
+    {
+        "label": "uuid",
+        "importPath": "agentmemory.utils.dataclasses.default_factory_functions",
+        "description": "agentmemory.utils.dataclasses.default_factory_functions",
+        "isExtraImport": true,
+        "detail": "agentmemory.utils.dataclasses.default_factory_functions",
+        "documentation": {}
+    },
+    {
+        "label": "empty_dict",
+        "importPath": "agentmemory.utils.dataclasses.default_factory_functions",
+        "description": "agentmemory.utils.dataclasses.default_factory_functions",
+        "isExtraImport": true,
+        "detail": "agentmemory.utils.dataclasses.default_factory_functions",
+        "documentation": {}
+    },
+    {
+        "label": "check_isinstance",
+        "importPath": "agentmemory.utils.validation.instance",
+        "description": "agentmemory.utils.validation.instance",
+        "isExtraImport": true,
+        "detail": "agentmemory.utils.validation.instance",
+        "documentation": {}
+    },
+    {
+        "label": "check_isinstance",
+        "importPath": "agentmemory.utils.validation.instance",
+        "description": "agentmemory.utils.validation.instance",
+        "isExtraImport": true,
+        "detail": "agentmemory.utils.validation.instance",
+        "documentation": {}
+    },
+    {
+        "label": "check_isinstance",
+        "importPath": "agentmemory.utils.validation.instance",
+        "description": "agentmemory.utils.validation.instance",
+        "isExtraImport": true,
+        "detail": "agentmemory.utils.validation.instance",
+        "documentation": {}
+    },
+    {
+        "label": "Conversations",
+        "importPath": "agentmemory.memory.conversations",
+        "description": "agentmemory.memory.conversations",
+        "isExtraImport": true,
+        "detail": "agentmemory.memory.conversations",
+        "documentation": {}
+    },
+    {
+        "label": "ConversationItems",
+        "importPath": "agentmemory.memory.conversations",
+        "description": "agentmemory.memory.conversations",
+        "isExtraImport": true,
+        "detail": "agentmemory.memory.conversations",
+        "documentation": {}
+    },
+    {
+        "label": "Personas",
+        "importPath": "agentmemory.memory.personas",
+        "description": "agentmemory.memory.personas",
+        "isExtraImport": true,
+        "detail": "agentmemory.memory.personas",
+        "documentation": {}
+    },
+    {
+        "label": "Workflows",
+        "importPath": "agentmemory.memory.workflows",
+        "description": "agentmemory.memory.workflows",
+        "isExtraImport": true,
+        "detail": "agentmemory.memory.workflows",
+        "documentation": {}
+    },
+    {
+        "label": "WorkflowSteps",
+        "importPath": "agentmemory.memory.workflows",
+        "description": "agentmemory.memory.workflows",
+        "isExtraImport": true,
+        "detail": "agentmemory.memory.workflows",
+        "documentation": {}
+    },
+    {
+        "label": "dataclass",
+        "importPath": "dataclasses",
+        "description": "dataclasses",
+        "isExtraImport": true,
+        "detail": "dataclasses",
+        "documentation": {}
+    },
+    {
+        "label": "field",
+        "importPath": "dataclasses",
+        "description": "dataclasses",
+        "isExtraImport": true,
+        "detail": "dataclasses",
+        "documentation": {}
+    },
+    {
+        "label": "asdict",
+        "importPath": "dataclasses",
+        "description": "dataclasses",
+        "isExtraImport": true,
+        "detail": "dataclasses",
+        "documentation": {}
+    },
+    {
+        "label": "dataclass",
+        "importPath": "dataclasses",
+        "description": "dataclasses",
+        "isExtraImport": true,
+        "detail": "dataclasses",
+        "documentation": {}
+    },
+    {
+        "label": "field",
+        "importPath": "dataclasses",
+        "description": "dataclasses",
+        "isExtraImport": true,
+        "detail": "dataclasses",
+        "documentation": {}
+    },
+    {
+        "label": "asdict",
+        "importPath": "dataclasses",
+        "description": "dataclasses",
+        "isExtraImport": true,
+        "detail": "dataclasses",
+        "documentation": {}
+    },
+    {
+        "label": "dataclass",
+        "importPath": "dataclasses",
+        "description": "dataclasses",
+        "isExtraImport": true,
+        "detail": "dataclasses",
+        "documentation": {}
+    },
+    {
+        "label": "field",
+        "importPath": "dataclasses",
+        "description": "dataclasses",
+        "isExtraImport": true,
+        "detail": "dataclasses",
+        "documentation": {}
+    },
+    {
+        "label": "asdict",
+        "importPath": "dataclasses",
+        "description": "dataclasses",
+        "isExtraImport": true,
+        "detail": "dataclasses",
+        "documentation": {}
+    },
+    {
+        "label": "dataclass",
+        "importPath": "dataclasses",
+        "description": "dataclasses",
+        "isExtraImport": true,
+        "detail": "dataclasses",
+        "documentation": {}
+    },
+    {
+        "label": "field",
+        "importPath": "dataclasses",
+        "description": "dataclasses",
+        "isExtraImport": true,
+        "detail": "dataclasses",
+        "documentation": {}
+    },
+    {
+        "label": "asdict",
+        "importPath": "dataclasses",
+        "description": "dataclasses",
+        "isExtraImport": true,
+        "detail": "dataclasses",
+        "documentation": {}
+    },
+    {
+        "label": "dataclass",
+        "importPath": "dataclasses",
+        "description": "dataclasses",
+        "isExtraImport": true,
+        "detail": "dataclasses",
+        "documentation": {}
+    },
+    {
+        "label": "field",
+        "importPath": "dataclasses",
+        "description": "dataclasses",
+        "isExtraImport": true,
+        "detail": "dataclasses",
+        "documentation": {}
+    },
+    {
+        "label": "asdict",
+        "importPath": "dataclasses",
+        "description": "dataclasses",
+        "isExtraImport": true,
+        "detail": "dataclasses",
+        "documentation": {}
+    },
+    {
+        "label": "Enum",
+        "importPath": "enum",
+        "description": "enum",
+        "isExtraImport": true,
+        "detail": "enum",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timezone",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "uuid4",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "bin_dir",
+        "kind": 5,
+        "importPath": ".venv.bin.activate_this",
+        "description": ".venv.bin.activate_this",
+        "peekOfCode": "bin_dir = os.path.dirname(abs_file)\nbase = bin_dir[: -len(\"bin\") - 1]  # strip away the bin part from the __file__, plus the path separator\n# prepend bin to PATH (this file is inside the bin directory)\nos.environ[\"PATH\"] = os.pathsep.join([bin_dir, *os.environ.get(\"PATH\", \"\").split(os.pathsep)])\nos.environ[\"VIRTUAL_ENV\"] = base  # virtual env is right above bin directory\nos.environ[\"VIRTUAL_ENV_PROMPT\"] = \"agentmemory\" or os.path.basename(base)  # noqa: SIM222\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in \"../lib/python3.13/site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))",
+        "detail": ".venv.bin.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "base",
+        "kind": 5,
+        "importPath": ".venv.bin.activate_this",
+        "description": ".venv.bin.activate_this",
+        "peekOfCode": "base = bin_dir[: -len(\"bin\") - 1]  # strip away the bin part from the __file__, plus the path separator\n# prepend bin to PATH (this file is inside the bin directory)\nos.environ[\"PATH\"] = os.pathsep.join([bin_dir, *os.environ.get(\"PATH\", \"\").split(os.pathsep)])\nos.environ[\"VIRTUAL_ENV\"] = base  # virtual env is right above bin directory\nos.environ[\"VIRTUAL_ENV_PROMPT\"] = \"agentmemory\" or os.path.basename(base)  # noqa: SIM222\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in \"../lib/python3.13/site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path)",
+        "detail": ".venv.bin.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "os.environ[\"PATH\"]",
+        "kind": 5,
+        "importPath": ".venv.bin.activate_this",
+        "description": ".venv.bin.activate_this",
+        "peekOfCode": "os.environ[\"PATH\"] = os.pathsep.join([bin_dir, *os.environ.get(\"PATH\", \"\").split(os.pathsep)])\nos.environ[\"VIRTUAL_ENV\"] = base  # virtual env is right above bin directory\nos.environ[\"VIRTUAL_ENV_PROMPT\"] = \"agentmemory\" or os.path.basename(base)  # noqa: SIM222\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in \"../lib/python3.13/site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path)\nsys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix",
+        "detail": ".venv.bin.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "os.environ[\"VIRTUAL_ENV\"]",
+        "kind": 5,
+        "importPath": ".venv.bin.activate_this",
+        "description": ".venv.bin.activate_this",
+        "peekOfCode": "os.environ[\"VIRTUAL_ENV\"] = base  # virtual env is right above bin directory\nos.environ[\"VIRTUAL_ENV_PROMPT\"] = \"agentmemory\" or os.path.basename(base)  # noqa: SIM222\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in \"../lib/python3.13/site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path)\nsys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": ".venv.bin.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "os.environ[\"VIRTUAL_ENV_PROMPT\"]",
+        "kind": 5,
+        "importPath": ".venv.bin.activate_this",
+        "description": ".venv.bin.activate_this",
+        "peekOfCode": "os.environ[\"VIRTUAL_ENV_PROMPT\"] = \"agentmemory\" or os.path.basename(base)  # noqa: SIM222\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in \"../lib/python3.13/site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path)\nsys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": ".venv.bin.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "prev_length",
+        "kind": 5,
+        "importPath": ".venv.bin.activate_this",
+        "description": ".venv.bin.activate_this",
+        "peekOfCode": "prev_length = len(sys.path)\nfor lib in \"../lib/python3.13/site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path)\nsys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": ".venv.bin.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "sys.path[:]",
+        "kind": 5,
+        "importPath": ".venv.bin.activate_this",
+        "description": ".venv.bin.activate_this",
+        "peekOfCode": "sys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": ".venv.bin.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "sys.real_prefix",
+        "kind": 5,
+        "importPath": ".venv.bin.activate_this",
+        "description": ".venv.bin.activate_this",
+        "peekOfCode": "sys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": ".venv.bin.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "sys.prefix",
+        "kind": 5,
+        "importPath": ".venv.bin.activate_this",
+        "description": ".venv.bin.activate_this",
+        "peekOfCode": "sys.prefix = base",
+        "detail": ".venv.bin.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "MongoDBConnection",
+        "kind": 6,
+        "importPath": "src.agentmemory.connection.longterm.pymongo.connection",
+        "description": "src.agentmemory.connection.longterm.pymongo.connection",
+        "peekOfCode": "class MongoDBConnection(LongtermMemoryConnectionInterface):\n    def __init__(self, mongo_uri: str, database: str):\n        self._uri = mongo_uri\n        self._client = MongoClient(mongo_uri)\n        self._db = self._client[database]\n        self._conversations = MongoDBConversationsSchema(self._db)\n        self._conversation_items = MongoDBConversationItemsSchema(self._db)\n        self._personas = MongoDBPersonasSchema(self._db)\n        self._workflows = MongoDBWorkflowsSchema(self._db)\n        self._workflow_steps = MongoDBWorkflowStepsSchema(self._db)",
+        "detail": "src.agentmemory.connection.longterm.pymongo.connection",
+        "documentation": {}
+    },
+    {
+        "label": "MongoDBConversationsSchema",
+        "kind": 6,
+        "importPath": "src.agentmemory.connection.longterm.pymongo.conversations",
+        "description": "src.agentmemory.connection.longterm.pymongo.conversations",
+        "peekOfCode": "class MongoDBConversationsSchema(LongtermMemoryConversationsSchemaInterface):\n    def __init__(self, db: Database):\n        self._db = db\n        self._col = db[CONVERSATIONS]\n    def get(self, conversation_id: str) -> Conversation:\n        data = self._col.find_one({CONVERSATION_ID: conversation_id})\n        if not data:\n            raise ObjectNotFoundError(CONVERSATIONS, conversation_id)\n        return Conversation(**data)\n    def list(self, query: dict = None) -> Iterator[Conversation]:",
+        "detail": "src.agentmemory.connection.longterm.pymongo.conversations",
+        "documentation": {}
+    },
+    {
+        "label": "MongoDBConversationItemsSchema",
+        "kind": 6,
+        "importPath": "src.agentmemory.connection.longterm.pymongo.conversations",
+        "description": "src.agentmemory.connection.longterm.pymongo.conversations",
+        "peekOfCode": "class MongoDBConversationItemsSchema(LongtermMemoryConversationItemsSchemaInterface):\n    def __init__(self, db: Database):\n        self._db = db\n        self._col = db[CONVERSATION_ITEMS]\n    def get(self, conversation_id: str, item_id: str) -> ConversationItem:\n        data = self._col.find_one({CONVERSATION_ID: conversation_id, ITEM_ID: item_id})\n        if not data:\n            raise ObjectNotFoundError(CONVERSATION_ITEMS, (conversation_id, item_id))\n        return ConversationItem(**data)\n    def list(self, query: dict = None) -> Iterator[ConversationItem]:",
+        "detail": "src.agentmemory.connection.longterm.pymongo.conversations",
+        "documentation": {}
+    },
+    {
+        "label": "CONVERSATION_ID",
+        "kind": 5,
+        "importPath": "src.agentmemory.connection.longterm.pymongo.conversations",
+        "description": "src.agentmemory.connection.longterm.pymongo.conversations",
+        "peekOfCode": "CONVERSATION_ID = \"conversation_id\"\nITEM_ID = \"item_id\"\nclass MongoDBConversationsSchema(LongtermMemoryConversationsSchemaInterface):\n    def __init__(self, db: Database):\n        self._db = db\n        self._col = db[CONVERSATIONS]\n    def get(self, conversation_id: str) -> Conversation:\n        data = self._col.find_one({CONVERSATION_ID: conversation_id})\n        if not data:\n            raise ObjectNotFoundError(CONVERSATIONS, conversation_id)",
+        "detail": "src.agentmemory.connection.longterm.pymongo.conversations",
+        "documentation": {}
+    },
+    {
+        "label": "ITEM_ID",
+        "kind": 5,
+        "importPath": "src.agentmemory.connection.longterm.pymongo.conversations",
+        "description": "src.agentmemory.connection.longterm.pymongo.conversations",
+        "peekOfCode": "ITEM_ID = \"item_id\"\nclass MongoDBConversationsSchema(LongtermMemoryConversationsSchemaInterface):\n    def __init__(self, db: Database):\n        self._db = db\n        self._col = db[CONVERSATIONS]\n    def get(self, conversation_id: str) -> Conversation:\n        data = self._col.find_one({CONVERSATION_ID: conversation_id})\n        if not data:\n            raise ObjectNotFoundError(CONVERSATIONS, conversation_id)\n        return Conversation(**data)",
+        "detail": "src.agentmemory.connection.longterm.pymongo.conversations",
+        "documentation": {}
+    },
+    {
+        "label": "MongoDBPersonasSchema",
+        "kind": 6,
+        "importPath": "src.agentmemory.connection.longterm.pymongo.personas",
+        "description": "src.agentmemory.connection.longterm.pymongo.personas",
+        "peekOfCode": "class MongoDBPersonasSchema(LongtermMemoryPersonasSchemaInterface):\n    def __init__(self, db: Database):\n        self._db = db\n        self._col = db[PERSONAS]\n    def get(self, persona_id: str) -> Persona:\n        data = self._col.find_one({PERSONA_ID: persona_id})\n        if not data:\n            raise ObjectNotFoundError(PERSONAS, persona_id)\n        return Persona(**data)\n    def get_by_name(self, name: str) -> Persona:",
+        "detail": "src.agentmemory.connection.longterm.pymongo.personas",
+        "documentation": {}
+    },
+    {
+        "label": "PERSONA_ID",
+        "kind": 5,
+        "importPath": "src.agentmemory.connection.longterm.pymongo.personas",
+        "description": "src.agentmemory.connection.longterm.pymongo.personas",
+        "peekOfCode": "PERSONA_ID = \"persona_id\"\nclass MongoDBPersonasSchema(LongtermMemoryPersonasSchemaInterface):\n    def __init__(self, db: Database):\n        self._db = db\n        self._col = db[PERSONAS]\n    def get(self, persona_id: str) -> Persona:\n        data = self._col.find_one({PERSONA_ID: persona_id})\n        if not data:\n            raise ObjectNotFoundError(PERSONAS, persona_id)\n        return Persona(**data)",
+        "detail": "src.agentmemory.connection.longterm.pymongo.personas",
+        "documentation": {}
+    },
+    {
+        "label": "MongoDBWorkflowsSchema",
+        "kind": 6,
+        "importPath": "src.agentmemory.connection.longterm.pymongo.workflows",
+        "description": "src.agentmemory.connection.longterm.pymongo.workflows",
+        "peekOfCode": "class MongoDBWorkflowsSchema(LongtermMemoryWorkflowsSchemaInterface):\n    def __init__(self, db: Database):\n        self._db = db\n        self._col = db[WORKFLOWS]\n    def get(self, workflow_id: str) -> Workflow:\n        data = self._col.find_one({WORKFLOW_ID: workflow_id})\n        if not data:\n            raise ObjectNotFoundError(WORKFLOWS, workflow_id)\n        return Workflow(**data)\n    def list(self, query: dict = None) -> Iterator[Workflow]:",
+        "detail": "src.agentmemory.connection.longterm.pymongo.workflows",
+        "documentation": {}
+    },
+    {
+        "label": "MongoDBWorkflowStepsSchema",
+        "kind": 6,
+        "importPath": "src.agentmemory.connection.longterm.pymongo.workflows",
+        "description": "src.agentmemory.connection.longterm.pymongo.workflows",
+        "peekOfCode": "class MongoDBWorkflowStepsSchema(LongtermMemoryWorkflowStepsSchemaInterface):\n    def __init__(self, db: Database):\n        self._db = db\n        self._col = db[WORKFLOW_STEPS]\n    def get(self, workflow_id: str, step_id: str) -> WorkflowStep:\n        data = self._col.find_one({WORKFLOW_ID: workflow_id, STEP_ID: step_id})\n        if not data:\n            raise ObjectNotFoundError(WORKFLOW_STEPS, (workflow_id, step_id))\n        return WorkflowStep(**data)\n    def list(self, query: dict = None) -> Iterator[WorkflowStep]:",
+        "detail": "src.agentmemory.connection.longterm.pymongo.workflows",
+        "documentation": {}
+    },
+    {
+        "label": "WORKFLOW_ID",
+        "kind": 5,
+        "importPath": "src.agentmemory.connection.longterm.pymongo.workflows",
+        "description": "src.agentmemory.connection.longterm.pymongo.workflows",
+        "peekOfCode": "WORKFLOW_ID = \"workflow_id\"\nSTEP_ID = \"step_id\"\nclass MongoDBWorkflowsSchema(LongtermMemoryWorkflowsSchemaInterface):\n    def __init__(self, db: Database):\n        self._db = db\n        self._col = db[WORKFLOWS]\n    def get(self, workflow_id: str) -> Workflow:\n        data = self._col.find_one({WORKFLOW_ID: workflow_id})\n        if not data:\n            raise ObjectNotFoundError(WORKFLOWS, workflow_id)",
+        "detail": "src.agentmemory.connection.longterm.pymongo.workflows",
+        "documentation": {}
+    },
+    {
+        "label": "STEP_ID",
+        "kind": 5,
+        "importPath": "src.agentmemory.connection.longterm.pymongo.workflows",
+        "description": "src.agentmemory.connection.longterm.pymongo.workflows",
+        "peekOfCode": "STEP_ID = \"step_id\"\nclass MongoDBWorkflowsSchema(LongtermMemoryWorkflowsSchemaInterface):\n    def __init__(self, db: Database):\n        self._db = db\n        self._col = db[WORKFLOWS]\n    def get(self, workflow_id: str) -> Workflow:\n        data = self._col.find_one({WORKFLOW_ID: workflow_id})\n        if not data:\n            raise ObjectNotFoundError(WORKFLOWS, workflow_id)\n        return Workflow(**data)",
+        "detail": "src.agentmemory.connection.longterm.pymongo.workflows",
+        "documentation": {}
+    },
+    {
+        "label": "CONVERSATIONS",
+        "kind": 5,
+        "importPath": "src.agentmemory.connection.longterm.collections",
+        "description": "src.agentmemory.connection.longterm.collections",
+        "peekOfCode": "CONVERSATIONS = \"conversations\"\nCONVERSATION_ITEMS = \"conversation_items\"\nWORKFLOWS = \"workflows\"\nWORKFLOW_STEPS = \"workflow_steps\"\nPERSONAS = \"personas\"",
+        "detail": "src.agentmemory.connection.longterm.collections",
+        "documentation": {}
+    },
+    {
+        "label": "CONVERSATION_ITEMS",
+        "kind": 5,
+        "importPath": "src.agentmemory.connection.longterm.collections",
+        "description": "src.agentmemory.connection.longterm.collections",
+        "peekOfCode": "CONVERSATION_ITEMS = \"conversation_items\"\nWORKFLOWS = \"workflows\"\nWORKFLOW_STEPS = \"workflow_steps\"\nPERSONAS = \"personas\"",
+        "detail": "src.agentmemory.connection.longterm.collections",
+        "documentation": {}
+    },
+    {
+        "label": "WORKFLOWS",
+        "kind": 5,
+        "importPath": "src.agentmemory.connection.longterm.collections",
+        "description": "src.agentmemory.connection.longterm.collections",
+        "peekOfCode": "WORKFLOWS = \"workflows\"\nWORKFLOW_STEPS = \"workflow_steps\"\nPERSONAS = \"personas\"",
+        "detail": "src.agentmemory.connection.longterm.collections",
+        "documentation": {}
+    },
+    {
+        "label": "WORKFLOW_STEPS",
+        "kind": 5,
+        "importPath": "src.agentmemory.connection.longterm.collections",
+        "description": "src.agentmemory.connection.longterm.collections",
+        "peekOfCode": "WORKFLOW_STEPS = \"workflow_steps\"\nPERSONAS = \"personas\"",
+        "detail": "src.agentmemory.connection.longterm.collections",
+        "documentation": {}
+    },
+    {
+        "label": "PERSONAS",
+        "kind": 5,
+        "importPath": "src.agentmemory.connection.longterm.collections",
+        "description": "src.agentmemory.connection.longterm.collections",
+        "peekOfCode": "PERSONAS = \"personas\"",
+        "detail": "src.agentmemory.connection.longterm.collections",
+        "documentation": {}
+    },
+    {
+        "label": "LongtermMemoryConversationsSchemaInterface",
+        "kind": 6,
+        "importPath": "src.agentmemory.connection.longterm.interface",
+        "description": "src.agentmemory.connection.longterm.interface",
+        "peekOfCode": "class LongtermMemoryConversationsSchemaInterface(ABC):\n    @abstractmethod\n    def get(self, conversation_id: str) -> Conversation: pass\n    @abstractmethod\n    def list(self, query: dict = None) -> Iterator[Conversation]: pass\n    @abstractmethod\n    def create(self, conversation: Conversation) -> Conversation: pass\n    @abstractmethod\n    def update(self, conversation_id: str, update_data: dict) -> None: pass\n    @abstractmethod",
+        "detail": "src.agentmemory.connection.longterm.interface",
+        "documentation": {}
+    },
+    {
+        "label": "LongtermMemoryConversationItemsSchemaInterface",
+        "kind": 6,
+        "importPath": "src.agentmemory.connection.longterm.interface",
+        "description": "src.agentmemory.connection.longterm.interface",
+        "peekOfCode": "class LongtermMemoryConversationItemsSchemaInterface(ABC):\n    @abstractmethod\n    def get(self, conversation_id: str, item_id: str) -> ConversationItem: pass\n    @abstractmethod\n    def list(self, query: dict = None) -> Iterator[ConversationItem]: pass\n    @abstractmethod\n    def list_by_conversation_id(self, conversation_id: str, query: dict = None) -> Iterator[ConversationItem]: pass\n    @abstractmethod\n    def list_until_id_found(self, conversation_id: str, item_id: str) -> Iterator[ConversationItem]: pass\n    @abstractmethod",
+        "detail": "src.agentmemory.connection.longterm.interface",
+        "documentation": {}
+    },
+    {
+        "label": "LongtermMemoryPersonasSchemaInterface",
+        "kind": 6,
+        "importPath": "src.agentmemory.connection.longterm.interface",
+        "description": "src.agentmemory.connection.longterm.interface",
+        "peekOfCode": "class LongtermMemoryPersonasSchemaInterface(ABC):\n    @abstractmethod\n    def get(self, persona_id: str) -> Persona: pass\n    @abstractmethod\n    def get_by_name(self, name: str) -> Persona: pass\n    @abstractmethod\n    def list(self, query: dict = None) -> Iterator[Persona]: pass\n    @abstractmethod\n    def create(self, persona: Persona) -> Persona: pass\n    @abstractmethod",
+        "detail": "src.agentmemory.connection.longterm.interface",
+        "documentation": {}
+    },
+    {
+        "label": "LongtermMemoryWorkflowsSchemaInterface",
+        "kind": 6,
+        "importPath": "src.agentmemory.connection.longterm.interface",
+        "description": "src.agentmemory.connection.longterm.interface",
+        "peekOfCode": "class LongtermMemoryWorkflowsSchemaInterface(ABC):\n    @abstractmethod\n    def get(self, workflow_id: str) -> Workflow: pass\n    @abstractmethod\n    def list(self, query: dict = None) -> Iterator[Workflow]: pass\n    @abstractmethod\n    def list_by_conversation_item_id(self, conversation_item_id: str, query: dict = None) -> Iterator[Workflow]: pass\n    @abstractmethod\n    def create(self, workflow: Workflow) -> Workflow: pass\n    @abstractmethod",
+        "detail": "src.agentmemory.connection.longterm.interface",
+        "documentation": {}
+    },
+    {
+        "label": "LongtermMemoryWorkflowStepsSchemaInterface",
+        "kind": 6,
+        "importPath": "src.agentmemory.connection.longterm.interface",
+        "description": "src.agentmemory.connection.longterm.interface",
+        "peekOfCode": "class LongtermMemoryWorkflowStepsSchemaInterface(ABC):\n    @abstractmethod\n    def get(self, workflow_id: str, step_id: str) -> WorkflowStep: pass\n    @abstractmethod\n    def list(self, query: dict = None) -> Iterator[WorkflowStep]: pass\n    @abstractmethod\n    def list_by_workflow_id(self, workflow_id: str, query: dict = None) -> Iterator[WorkflowStep]: pass\n    @abstractmethod\n    def create(self, step: WorkflowStep) -> WorkflowStep: pass\n    @abstractmethod",
+        "detail": "src.agentmemory.connection.longterm.interface",
+        "documentation": {}
+    },
+    {
+        "label": "LongtermMemoryConnectionInterface",
+        "kind": 6,
+        "importPath": "src.agentmemory.connection.longterm.interface",
+        "description": "src.agentmemory.connection.longterm.interface",
+        "peekOfCode": "class LongtermMemoryConnectionInterface(ABC):\n    @abstractmethod\n    def conversations(self) -> LongtermMemoryConversationsSchemaInterface: pass\n    @abstractmethod\n    def conversation_items(self) -> LongtermMemoryConversationItemsSchemaInterface: pass\n    @abstractmethod\n    def personas(self) -> LongtermMemoryPersonasSchemaInterface: pass\n    @abstractmethod\n    def workflows(self) -> LongtermMemoryWorkflowsSchemaInterface: pass\n    @abstractmethod",
+        "detail": "src.agentmemory.connection.longterm.interface",
+        "documentation": {}
+    },
+    {
+        "label": "AgentMemoryConnection",
+        "kind": 6,
+        "importPath": "src.agentmemory.connection.connection",
+        "description": "src.agentmemory.connection.connection",
+        "peekOfCode": "class AgentMemoryConnection:\n    def __init__(\n            self,\n            longterm_con: LongtermMemoryConnectionInterface,\n            shortterm_con: str = None\n    ):\n        self._longterm_con = longterm_con\n        self._shortterm_con = shortterm_con\n    @property\n    def longterm(self) -> LongtermMemoryConnectionInterface:",
+        "detail": "src.agentmemory.connection.connection",
+        "documentation": {}
+    },
+    {
+        "label": "AgentMemoryError",
+        "kind": 6,
+        "importPath": "src.agentmemory.exc.errors",
+        "description": "src.agentmemory.exc.errors",
+        "peekOfCode": "class AgentMemoryError(Exception):\n    def __init__(self, *args):\n        super().__init__(*args)\nclass ObjectNotFoundError(AgentMemoryError):\n    def __init__(self, collection: str, id: str | tuple[str]):\n        id = str(id)\n        msg = f\"Object with ID '{id}' not found in collection '{collection}'.\"\n        super().__init__(msg)\nclass ObjectNotUpdatedError(AgentMemoryError):\n    def __init__(self, collection: str, id: str | tuple[str]):",
+        "detail": "src.agentmemory.exc.errors",
+        "documentation": {}
+    },
+    {
+        "label": "ObjectNotFoundError",
+        "kind": 6,
+        "importPath": "src.agentmemory.exc.errors",
+        "description": "src.agentmemory.exc.errors",
+        "peekOfCode": "class ObjectNotFoundError(AgentMemoryError):\n    def __init__(self, collection: str, id: str | tuple[str]):\n        id = str(id)\n        msg = f\"Object with ID '{id}' not found in collection '{collection}'.\"\n        super().__init__(msg)\nclass ObjectNotUpdatedError(AgentMemoryError):\n    def __init__(self, collection: str, id: str | tuple[str]):\n        id = str(id)\n        msg = f\"Object with ID '{id}' in collection '{collection}' could not be updated.\"\n        super().__init__(msg)",
+        "detail": "src.agentmemory.exc.errors",
+        "documentation": {}
+    },
+    {
+        "label": "ObjectNotUpdatedError",
+        "kind": 6,
+        "importPath": "src.agentmemory.exc.errors",
+        "description": "src.agentmemory.exc.errors",
+        "peekOfCode": "class ObjectNotUpdatedError(AgentMemoryError):\n    def __init__(self, collection: str, id: str | tuple[str]):\n        id = str(id)\n        msg = f\"Object with ID '{id}' in collection '{collection}' could not be updated.\"\n        super().__init__(msg)\nclass ObjectNotDeletedError(AgentMemoryError):\n    def __init__(self, collection: str, id: str | tuple[str], e: Exception):\n        id = str(id)\n        msg = f\"Object with ID '{id}' in collection '{collection}' could not be deleted because: {e}.\"\n        super().__init__(msg)",
+        "detail": "src.agentmemory.exc.errors",
+        "documentation": {}
+    },
+    {
+        "label": "ObjectNotDeletedError",
+        "kind": 6,
+        "importPath": "src.agentmemory.exc.errors",
+        "description": "src.agentmemory.exc.errors",
+        "peekOfCode": "class ObjectNotDeletedError(AgentMemoryError):\n    def __init__(self, collection: str, id: str | tuple[str], e: Exception):\n        id = str(id)\n        msg = f\"Object with ID '{id}' in collection '{collection}' could not be deleted because: {e}.\"\n        super().__init__(msg)\nclass ObjectNotCreatedError(AgentMemoryError):\n    def __init__(self, msg: str = None, e: Exception = None):\n        msg = msg or f\"Object could not be created because: {e}\"\n        super().__init__(msg)\nclass InstanceTypeError(AgentMemoryError):",
+        "detail": "src.agentmemory.exc.errors",
+        "documentation": {}
+    },
+    {
+        "label": "ObjectNotCreatedError",
+        "kind": 6,
+        "importPath": "src.agentmemory.exc.errors",
+        "description": "src.agentmemory.exc.errors",
+        "peekOfCode": "class ObjectNotCreatedError(AgentMemoryError):\n    def __init__(self, msg: str = None, e: Exception = None):\n        msg = msg or f\"Object could not be created because: {e}\"\n        super().__init__(msg)\nclass InstanceTypeError(AgentMemoryError):\n    def __init__(self, obj: object, cls: Type):\n        obj_name = obj.__name__\n        cls_name = cls.__name__\n        msg = f\"Unexpected type: Given is a object of type '{obj_name}', but expected is a object of type '{cls_name}'\"\n        super().__init__(msg)",
+        "detail": "src.agentmemory.exc.errors",
+        "documentation": {}
+    },
+    {
+        "label": "InstanceTypeError",
+        "kind": 6,
+        "importPath": "src.agentmemory.exc.errors",
+        "description": "src.agentmemory.exc.errors",
+        "peekOfCode": "class InstanceTypeError(AgentMemoryError):\n    def __init__(self, obj: object, cls: Type):\n        obj_name = obj.__name__\n        cls_name = cls.__name__\n        msg = f\"Unexpected type: Given is a object of type '{obj_name}', but expected is a object of type '{cls_name}'\"\n        super().__init__(msg)",
+        "detail": "src.agentmemory.exc.errors",
+        "documentation": {}
+    },
+    {
+        "label": "Conversations",
+        "kind": 6,
+        "importPath": "src.agentmemory.memory.conversations",
+        "description": "src.agentmemory.memory.conversations",
+        "peekOfCode": "class Conversations:\n    def __init__(self, con: AgentMemoryConnection):\n        self._con = con\n    def get(self, conversation_id: str, cache_cnf: dict = None) -> Conversation:\n        return self._con.longterm.conversations().get(conversation_id)\n    def list(self, query: dict = None, cache_cnf: dict = None) -> Iterator[Conversation]:\n        return self._con.longterm.conversations().list(query)\n    def create(self, conversation: Conversation) -> Conversation:\n        check_isinstance(conversation, Conversation)\n        return self._con.longterm.conversations().create(conversation)",
+        "detail": "src.agentmemory.memory.conversations",
+        "documentation": {}
+    },
+    {
+        "label": "ConversationItems",
+        "kind": 6,
+        "importPath": "src.agentmemory.memory.conversations",
+        "description": "src.agentmemory.memory.conversations",
+        "peekOfCode": "class ConversationItems:\n    def __init__(self, con: AgentMemoryConnection):\n        self._con = con\n    def get(self, conversation_id: str, item_id: str, cache_cnf: dict = None) -> ConversationItem:\n        return self._con.longterm.conversation_items().get(conversation_id, item_id)\n    def list(self, query: dict = None, cache_cnf: dict = None) -> Iterator[ConversationItem]:\n        return self._con.longterm.conversation_items().list(query)\n    def list_by_conversation_id(self, conversation_id: str, query: dict = None, cache_cnf: dict = None) -> Iterator[ConversationItem]:\n        return self._con.longterm.conversation_items().list_by_conversation_id(conversation_id, query)\n    def list_until_id_found(self, conversation_id: str, item_id: str, cache_cnf: dict = None) -> Iterator[ConversationItem]:",
+        "detail": "src.agentmemory.memory.conversations",
+        "documentation": {}
+    },
+    {
+        "label": "AgentMemory",
+        "kind": 6,
+        "importPath": "src.agentmemory.memory.memory",
+        "description": "src.agentmemory.memory.memory",
+        "peekOfCode": "class AgentMemory:\n    def __init__(\n            self,\n            name: str,\n            con: AgentMemoryConnection\n    ):\n        self._name = name\n        self._con = con\n        self._conversations = Conversations(con=con)\n        self._conversation_items = ConversationItems(con=con)",
+        "detail": "src.agentmemory.memory.memory",
+        "documentation": {}
+    },
+    {
+        "label": "Personas",
+        "kind": 6,
+        "importPath": "src.agentmemory.memory.personas",
+        "description": "src.agentmemory.memory.personas",
+        "peekOfCode": "class Personas:\n    def __init__(self, con: AgentMemoryConnection):\n        self._con = con\n        self._personas = con.longterm.personas()\n    def get(self, persona_id: str, cache_cnf: dict = None) -> Persona:\n        return self._personas.get(persona_id)\n    def get_by_name(self, name: str, cache_cnf: dict = None) -> Persona:\n        return self._personas.get_by_name(name)\n    def list(self, query: dict = None, cache_cnf: dict = None) -> Iterator[Persona]:\n        return self._personas.list(query)",
+        "detail": "src.agentmemory.memory.personas",
+        "documentation": {}
+    },
+    {
+        "label": "Workflows",
+        "kind": 6,
+        "importPath": "src.agentmemory.memory.workflows",
+        "description": "src.agentmemory.memory.workflows",
+        "peekOfCode": "class Workflows:\n    def __init__(self, con: AgentMemoryConnection):\n        self._con = con\n    def get(self, workflow_id: str, cache_cnf: dict = None) -> Workflow:\n        return self._con.longterm.workflows().get(workflow_id)\n    def list(self, query: dict = None, cache_cnf: dict = None) -> Iterator[Workflow]:\n        return self._con.longterm.workflows().list(query)\n    def list_by_conversation_id(self, conversation_item_id: str, query: dict = None, cache_cnf: dict = None) -> Iterator[Workflow]:\n        return self._con.longterm.workflows().list_by_conversation_item_id(conversation_item_id, query)\n    def create(self, workflow: Workflow) -> Workflow:",
+        "detail": "src.agentmemory.memory.workflows",
+        "documentation": {}
+    },
+    {
+        "label": "WorkflowSteps",
+        "kind": 6,
+        "importPath": "src.agentmemory.memory.workflows",
+        "description": "src.agentmemory.memory.workflows",
+        "peekOfCode": "class WorkflowSteps:\n    def __init__(self, con: AgentMemoryConnection):\n        self._con = con\n    def get(self, workflow_id: str, step_id: str, cache_cnf: dict = None) -> WorkflowStep:\n        return self._con.longterm.workflow_steps().get(workflow_id, step_id)\n    def list(self, query: dict = None, cache_cnf: dict = None) -> Iterator[WorkflowStep]:\n        return self._con.longterm.workflow_steps().list(query)\n    def list_by_workflow_id(self, workflow_id: str, query: dict = None, cache_cnf: dict = None) -> Iterator[WorkflowStep]:\n        return self._con.longterm.workflow_steps().list_by_workflow_id(workflow_id, query)\n    def create(self, step: WorkflowStep) -> WorkflowStep:",
+        "detail": "src.agentmemory.memory.workflows",
+        "documentation": {}
+    },
+    {
+        "label": "Agent",
+        "kind": 6,
+        "importPath": "src.agentmemory.schema.agents",
+        "description": "src.agentmemory.schema.agents",
+        "peekOfCode": "class Agent:\n    name: str\n    purpose: str\n    instructions: str\n    persona_id: str\n    tool_ids: list[str]\n    _id: Optional[Any] = None\n    agent_id: str = field(default_factory=uuid)\n    max_steps: int = 20\n    data: dict = field(default_factory=empty_dict)",
+        "detail": "src.agentmemory.schema.agents",
+        "documentation": {}
+    },
+    {
+        "label": "Conversation",
+        "kind": 6,
+        "importPath": "src.agentmemory.schema.conversations",
+        "description": "src.agentmemory.schema.conversations",
+        "peekOfCode": "class Conversation:\n    title: str\n    _id: Optional[Any] = None\n    conversation_id: str = field(default_factory=uuid)\n    data: dict = field(default_factory=empty_dict)\n    created_at: str = field(default_factory=current_iso_datetime)\n    updated_at: str = field(default_factory=current_iso_datetime)\n    def to_dict(self) -> dict:\n        return asdict(self, dict_factory=dict)\n@dataclass",
+        "detail": "src.agentmemory.schema.conversations",
+        "documentation": {}
+    },
+    {
+        "label": "ConversationItem",
+        "kind": 6,
+        "importPath": "src.agentmemory.schema.conversations",
+        "description": "src.agentmemory.schema.conversations",
+        "peekOfCode": "class ConversationItem:\n    conversation_id: str\n    role: str\n    content: str\n    _id: Optional[Any] = None\n    item_id: str = field(default_factory=uuid)\n    data: dict = field(default_factory=empty_dict)\n    created_at: str = field(default_factory=current_iso_datetime)\n    updated_at: str = field(default_factory=current_iso_datetime)\n    def to_dict(self) -> dict:",
+        "detail": "src.agentmemory.schema.conversations",
+        "documentation": {}
+    },
+    {
+        "label": "Persona",
+        "kind": 6,
+        "importPath": "src.agentmemory.schema.personas",
+        "description": "src.agentmemory.schema.personas",
+        "peekOfCode": "class Persona:\n    name: str\n    role: str\n    goals: str\n    background: str\n    _id: Optional[Any] = None\n    persona_id: str = field(default_factory=uuid)\n    embedding: Optional[list[float]] = None\n    created_at: str = field(default_factory=current_iso_datetime)\n    updated_at: str = field(default_factory=current_iso_datetime)",
+        "detail": "src.agentmemory.schema.personas",
+        "documentation": {}
+    },
+    {
+        "label": "Tool",
+        "kind": 6,
+        "importPath": "src.agentmemory.schema.tools",
+        "description": "src.agentmemory.schema.tools",
+        "peekOfCode": "class Tool:\n    name: str\n    description: str\n    parameters: dict\n    _id: Optional[Any] = None\n    tool_id: str = field(default_factory=uuid)\n    data: dict = field(default_factory=empty_dict)\n    created_at: str = field(default_factory=current_iso_datetime)\n    updated_at: str = field(default_factory=current_iso_datetime)\n    def to_dict(self) -> dict:",
+        "detail": "src.agentmemory.schema.tools",
+        "documentation": {}
+    },
+    {
+        "label": "WorkflowStatus",
+        "kind": 6,
+        "importPath": "src.agentmemory.schema.workflows",
+        "description": "src.agentmemory.schema.workflows",
+        "peekOfCode": "class WorkflowStatus(str, Enum):\n    RUNNING = \"running\"\n    SUCCESS = \"success\"\n    ERROR = \"error\"\n@dataclass\nclass Workflow:\n    conversation_item_id: str\n    user_query: str\n    status: WorkflowStatus\n    _id: Optional[Any] = None",
+        "detail": "src.agentmemory.schema.workflows",
+        "documentation": {}
+    },
+    {
+        "label": "Workflow",
+        "kind": 6,
+        "importPath": "src.agentmemory.schema.workflows",
+        "description": "src.agentmemory.schema.workflows",
+        "peekOfCode": "class Workflow:\n    conversation_item_id: str\n    user_query: str\n    status: WorkflowStatus\n    _id: Optional[Any] = None\n    workflow_id: str = field(default_factory=uuid)\n    data: dict = field(default_factory=empty_dict)\n    created_at: str = field(default_factory=current_iso_datetime)\n    updated_at: str = field(default_factory=current_iso_datetime)\n    def to_dict(self) -> dict:",
+        "detail": "src.agentmemory.schema.workflows",
+        "documentation": {}
+    },
+    {
+        "label": "WorkflowStep",
+        "kind": 6,
+        "importPath": "src.agentmemory.schema.workflows",
+        "description": "src.agentmemory.schema.workflows",
+        "peekOfCode": "class WorkflowStep:\n    workflow_id: str\n    name: str\n    tool: str\n    arguments: dict\n    status: WorkflowStatus\n    _id: Optional[Any] = None\n    step_id: str = field(default_factory=uuid)\n    result: Optional[str] = None\n    logs: list[str] = field(default_factory=list)",
+        "detail": "src.agentmemory.schema.workflows",
+        "documentation": {}
+    },
+    {
+        "label": "current_iso_datetime",
+        "kind": 2,
+        "importPath": "src.agentmemory.utils.dataclasses.default_factory_functions",
+        "description": "src.agentmemory.utils.dataclasses.default_factory_functions",
+        "peekOfCode": "def current_iso_datetime() -> str:\n    \"\"\"\n    Returns the current date and time in ISO 8601 format.\n    Returns:\n        str: Current date and time in ISO 8601 format.\n    \"\"\"\n    return datetime.now(timezone.utc).isoformat()\ndef uuid() -> str:\n    \"\"\"\n    Generates a unique identifier.",
+        "detail": "src.agentmemory.utils.dataclasses.default_factory_functions",
+        "documentation": {}
+    },
+    {
+        "label": "uuid",
+        "kind": 2,
+        "importPath": "src.agentmemory.utils.dataclasses.default_factory_functions",
+        "description": "src.agentmemory.utils.dataclasses.default_factory_functions",
+        "peekOfCode": "def uuid() -> str:\n    \"\"\"\n    Generates a unique identifier.\n    Returns:\n        str: A unique identifier.\n    \"\"\"\n    return uuid4().hex\ndef empty_dict() -> dict:\n    return {}",
+        "detail": "src.agentmemory.utils.dataclasses.default_factory_functions",
+        "documentation": {}
+    },
+    {
+        "label": "empty_dict",
+        "kind": 2,
+        "importPath": "src.agentmemory.utils.dataclasses.default_factory_functions",
+        "description": "src.agentmemory.utils.dataclasses.default_factory_functions",
+        "peekOfCode": "def empty_dict() -> dict:\n    return {}",
+        "detail": "src.agentmemory.utils.dataclasses.default_factory_functions",
+        "documentation": {}
+    },
+    {
+        "label": "read_markdown_file",
+        "kind": 2,
+        "importPath": "src.agentmemory.utils.reader.file",
+        "description": "src.agentmemory.utils.reader.file",
+        "peekOfCode": "def read_markdown_file(file_path: str) -> str:\n    \"\"\"\n    Reads a markdown file and returns its content as a string.\n    Args:\n        file_path (str): The path to the markdown file.\n    Returns:\n        str: The content of the markdown file.\n    \"\"\"\n    with open(file_path, \"r\", encoding=\"utf-8\") as file:\n        return file.read()",
+        "detail": "src.agentmemory.utils.reader.file",
+        "documentation": {}
+    },
+    {
+        "label": "check_isinstance",
+        "kind": 2,
+        "importPath": "src.agentmemory.utils.validation.instance",
+        "description": "src.agentmemory.utils.validation.instance",
+        "peekOfCode": "def check_isinstance(obj: object, cls: Type) -> None:\n    if not isinstance(obj, cls):\n        raise InstanceTypeError(obj, cls)",
+        "detail": "src.agentmemory.utils.validation.instance",
+        "documentation": {}
+    }
+]

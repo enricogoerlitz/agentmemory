@@ -1,0 +1,100 @@
+from typing import Iterator
+from bson import ObjectId
+
+from pymongo.database import Database
+
+from agentmemory.connection.longterm.interface import (
+    LongtermMemoryWorkflowsSchemaInterface,
+    LongtermMemoryWorkflowStepsSchemaInterface
+)
+from agentmemory.exc.errors import ObjectNotUpdatedError, ObjectNotFoundError
+from agentmemory.connection.longterm.collections import WORKFLOWS, WORKFLOW_STEPS
+from agentmemory.schema.workflows import Workflow, WorkflowStep
+
+
+WORKFLOW_ID = "workflow_id"
+STEP_ID = "step_id"
+
+
+class MongoDBWorkflowsSchema(LongtermMemoryWorkflowsSchemaInterface):
+    def __init__(self, db: Database):
+        self._db = db
+        self._col = db[WORKFLOWS]
+
+    def get(self, workflow_id: str) -> Workflow:
+        data = self._col.find_one({WORKFLOW_ID: workflow_id})
+        if not data:
+            raise ObjectNotFoundError(WORKFLOWS, workflow_id)
+        return Workflow(**data)
+
+    def list(self, query: dict = None) -> Iterator[Workflow]:
+        query = query or {}
+        for data in self._col.find(query).sort("created_at", 1):
+            yield Workflow(**data)
+
+    def list_by_conversation_item_id(self, conversation_item_id: str, query: dict = None) -> Iterator[Workflow]:
+        query = query or {}
+        query["conversation_item_id"] = conversation_item_id
+        yield from self.list(query)
+
+    def create(self, workflow: Workflow) -> Workflow:
+        workflow._id = ObjectId()
+        data = workflow.to_dict()
+        res = self._col.insert_one(data)
+        workflow._id = str(res.inserted_id)
+        return workflow
+
+    def update(self, workflow_id: str, update_data: dict) -> None:
+        res = self._col.update_one(
+            {WORKFLOW_ID: workflow_id},
+            {"$set": update_data}
+        )
+
+        if res.modified_count == 0:
+            raise ObjectNotUpdatedError(WORKFLOWS, workflow_id)
+
+    def delete(self, workflow_id: str, cascade: bool) -> None:
+        self._col.delete_one({WORKFLOW_ID: workflow_id})
+        if cascade:
+            self._db[WORKFLOW_STEPS].delete_many({WORKFLOW_ID: workflow_id})
+
+
+class MongoDBWorkflowStepsSchema(LongtermMemoryWorkflowStepsSchemaInterface):
+    def __init__(self, db: Database):
+        self._db = db
+        self._col = db[WORKFLOW_STEPS]
+
+    def get(self, workflow_id: str, step_id: str) -> WorkflowStep:
+        data = self._col.find_one({WORKFLOW_ID: workflow_id, STEP_ID: step_id})
+        if not data:
+            raise ObjectNotFoundError(WORKFLOW_STEPS, (workflow_id, step_id))
+        return WorkflowStep(**data)
+
+    def list(self, query: dict = None) -> Iterator[WorkflowStep]:
+        query = query or {}
+        for data in self._col.find(query).sort("created_at", 1):
+            yield WorkflowStep(**data)
+
+    def list_by_workflow_id(self, workflow_id: str, query: dict = None) -> Iterator[WorkflowStep]:
+        query = query or {}
+        query[WORKFLOW_ID] = workflow_id
+        yield from self.list(query)
+
+    def create(self, step: WorkflowStep) -> WorkflowStep:
+        step._id = ObjectId()
+        data = step.to_dict()
+        res = self._col.insert_one(data)
+        step._id = str(res.inserted_id)
+        return step
+
+    def update(self, workflow_id: str, step_id: str, update_data: dict) -> None:
+        res = self._col.update_one(
+            {WORKFLOW_ID: workflow_id, STEP_ID: step_id},
+            {"$set": update_data}
+        )
+
+        if res.modified_count == 0:
+            raise ObjectNotUpdatedError(WORKFLOW_STEPS, (workflow_id, step_id))
+
+    def delete(self, workflow_id: str, step_id: str) -> None:
+        self._col.delete_one({WORKFLOW_ID: workflow_id, STEP_ID: step_id})
