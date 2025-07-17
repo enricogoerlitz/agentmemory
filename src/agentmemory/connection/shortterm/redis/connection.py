@@ -38,17 +38,25 @@ class RedisConnection(ShorttermMemoryInterface):
         if isinstance(pattern, str):
             pattern = [pattern]
 
-        patterns = [
-            key
-            for p in pattern
-            for key in self.keys(p)
-        ]
+        seen_keys = set()
+        pipe = self._client.pipeline()
+        batch_size = 1000
+        batch_count = 0
 
-        if len(patterns) == 0:
-            return None
+        for p in pattern:
+            for key in self._client.scan_iter(match=p, count=batch_size):
+                if key not in seen_keys:
+                    seen_keys.add(key)
+                    pipe.delete(key)
+                    batch_count += 1
+                    if batch_count >= batch_size:
+                        pipe.execute()
+                        batch_count = 0
 
-        print("REMOVE PATTERNS:", patterns)
-        self._client.delete(*patterns)
+        if batch_count > 0:
+            pipe.execute()
+        print("CLEAR KEYS:", list(seen_keys))
 
     def keys(self, pattern: str) -> list[str]:
-        return self._client.keys(pattern)
+        return [key.decode("utf-8") if isinstance(key, bytes) else key
+                for key in self._client.scan_iter(match=pattern)]

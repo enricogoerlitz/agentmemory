@@ -45,7 +45,7 @@ class Workflows:
         return data
 
     def list_by_conversation_item_id(self, conversation_item_id: str, query: dict = None, cache: bool = True, limit: int = None) -> Iterator[Workflow]:
-        cache_key = self._cache_key(rtype=CacheRetrieveType.LIST, id=(conversation_item_id, None), query=query, limit=limit)
+        cache_key = self._cache_key(rtype=CacheRetrieveType.LIST_BY_ANCHOR, id=(conversation_item_id, None), query=query, limit=limit)
         if cache:
             cache_data_list = self._cache.get(cache_key)
             if cache_data_list is not None:
@@ -61,7 +61,10 @@ class Workflows:
 
         data = self._workflows.create(workflow)
 
-        clear_keys = self._clear_cache_keys(ClearCacheTransactionType.CREATE)
+        clear_keys = self._clear_cache_keys(
+            ttype=ClearCacheTransactionType.CREATE,
+            id=(workflow.conversation_item_id, workflow.workflow_id)
+        )
         self._cache.clear(clear_keys)
 
         return data
@@ -140,14 +143,14 @@ class WorkflowSteps:
         return data
 
     def list_by_workflow_id(self, workflow_id: str, query: dict = None, cache: bool = True, limit: int = None) -> Iterator[WorkflowStep]:
-        cache_key = self._cache_key(rtype=CacheRetrieveType.LIST, id=workflow_id, query=query, limit=limit)
+        cache_key = self._cache_key(rtype=CacheRetrieveType.LIST_BY_ANCHOR, id=(workflow_id, None), query=query, limit=limit)
         if cache:
             cache_data_list = self._cache.get(cache_key)
             if cache_data_list is not None:
                 return [WorkflowStep(**cache_data) for cache_data in cache_data_list]
 
         data = self._workflow_steps.list_by_workflow_id(workflow_id, query, limit)
-        self._cache.set(cache_key, data.to_dict())
+        self._cache.set(cache_key, list_to_dict(data))
 
         return data
 
@@ -156,7 +159,10 @@ class WorkflowSteps:
 
         data = self._workflow_steps.create(step)
 
-        clear_keys = self._clear_cache_keys(ClearCacheTransactionType.CREATE)
+        clear_keys = self._clear_cache_keys(
+            ttype=ClearCacheTransactionType.CREATE,
+            id=(step.workflow_id, step.step_id)
+        )
         self._cache.clear(clear_keys)
 
         return data

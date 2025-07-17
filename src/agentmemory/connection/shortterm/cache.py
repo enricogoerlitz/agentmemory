@@ -6,6 +6,7 @@ from agentmemory.connection.longterm.collections import Collection
 class CacheRetrieveType(str, Enum):
     GET = "GET"
     LIST = "LIST"
+    LIST_BY_ANCHOR = "LIST_BY_ANCHOR"
     LIST_UNTIL_ID_FOUND = "LIST_UNTIL_ID_FOUND"
 
     def members(self) -> list[str]:
@@ -64,7 +65,7 @@ def _create_kwargs(kwargs: dict) -> str | None:
     if len(kwargs.keys()) == 0:
         return None
 
-    kwargs_ = ";".join([f"{k}:{v}" for k, v in kwargs.items()])
+    kwargs_ = ";".join([f"{k}:{v}" for k, v in kwargs.items() if v is not None])
     return kwargs_
 
 
@@ -124,22 +125,24 @@ class ClearCacheKey:
 
         rgettype = _create_rtype(CacheRetrieveType.GET)
         rlisttype = _create_rtype(CacheRetrieveType.LIST)
+        ralisttype = _create_rtype(CacheRetrieveType.LIST_BY_ANCHOR)
         id = _create_id(self._id, "?")
         col = _create_col(self._col)
 
+        clear_list_anchor_key = ""
         clear_list_key = f"{rlisttype};{col}*"
         if self._is_first_id_anchor:
             if not isinstance(self._id, tuple) or len(self._id) != 2:
                 raise ValueError("If 'is_first_id_anchor=True', the id must be a tuple with 2 entries.")
-            clear_list_key = f"{rlisttype};{col};id:{self._id[0]}*"
+            clear_list_anchor_key = f"{ralisttype};{col};id:{self._id[0]}*"
 
         if self._ttype == ClearCacheTransactionType.CREATE:
-            return [clear_list_key]
+            return [clear_list_key, clear_list_anchor_key]
 
         id = _create_id(self._id, CacheRetrieveType.GET)
         clear_get_key = f"{rgettype};{col};{id}*"
 
-        return [clear_get_key, clear_list_key]
+        return [clear_get_key, clear_list_key, clear_list_anchor_key]
 
     def __str__(self):
         return str(self.clear_keys())

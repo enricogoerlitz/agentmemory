@@ -142,7 +142,7 @@ class ConversationItems:
             cache: bool = True,
             limit: int = None
     ) -> List[ConversationItem]:
-        cache_key = self._cache_key(rtype=CacheRetrieveType.LIST, id=conversation_id, query=query, limit=limit)
+        cache_key = self._cache_key(rtype=CacheRetrieveType.LIST_BY_ANCHOR, id=conversation_id, query=query, limit=limit)
         if cache:
             cache_data_list = self._cache.get(cache_key)
             if cache_data_list is not None:
@@ -170,7 +170,10 @@ class ConversationItems:
 
         data = self._conversation_items.create(item)
 
-        clear_keys = self._clear_cache_keys(ClearCacheTransactionType.CREATE)
+        clear_keys = self._clear_cache_keys(
+            ttype=ClearCacheTransactionType.CREATE,
+            id=(item.conversation_id, item.item_id)
+        )
         self._cache.clear(clear_keys)
 
         return data
