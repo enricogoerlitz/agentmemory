@@ -45,7 +45,7 @@ jobs:
           done
 
       - name: Run tests
-        run: pytest
+        run: uv run pytest
 
       - name: Shut down Docker Compose
         if: always()
