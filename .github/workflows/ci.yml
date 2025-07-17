@@ -2,7 +2,11 @@ name: CI
 
 on:
   push:
-    branches: [ main ]
+    branches: 
+      - dev
+      - test
+      - main
+      - release
   pull_request:
 
 jobs:
@@ -25,9 +29,6 @@ jobs:
 
       - name: Install dependencies via uv
         run: uv sync
-
-    #   - name: Install agentmemory in editable mode
-    #     run: uv pip install -e .
 
       - name: Start Docker Compose
         run: docker compose -f docker/local/docker-compose.yml up -d
