@@ -5,6 +5,7 @@ from enum import Enum
 from agentmemory.utils.dataclasses.default_factory_functions import (
     current_iso_datetime, uuid, empty_dict
 )
+from agentmemory.utils.transform.todict import ToDictInterface, to_dict_factory
 
 
 class WorkflowStatus(str, Enum):
@@ -14,7 +15,7 @@ class WorkflowStatus(str, Enum):
 
 
 @dataclass
-class Workflow:
+class Workflow(ToDictInterface):
     conversation_item_id: str
     user_query: str
     status: WorkflowStatus
@@ -25,11 +26,11 @@ class Workflow:
     updated_at: str = field(default_factory=current_iso_datetime)
 
     def to_dict(self) -> dict:
-        return asdict(self, dict_factory=dict)
+        return asdict(self, dict_factory=to_dict_factory)
 
 
 @dataclass
-class WorkflowStep:
+class WorkflowStep(ToDictInterface):
     workflow_id: str
     name: str
     tool: str
@@ -45,4 +46,4 @@ class WorkflowStep:
     updated_at: str = field(default_factory=current_iso_datetime)
 
     def to_dict(self) -> dict:
-        return asdict(self, dict_factory=dict)
+        return asdict(self, dict_factory=to_dict_factory)

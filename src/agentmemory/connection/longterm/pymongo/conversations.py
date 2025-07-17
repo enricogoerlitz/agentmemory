@@ -1,4 +1,5 @@
 from typing import List, Iterator
+from collections import deque
 from bson import ObjectId
 
 from pymongo.database import Database
@@ -13,6 +14,7 @@ from agentmemory.connection.longterm.interface import (
 )
 from agentmemory.connection.longterm.collections import CONVERSATIONS, CONVERSATION_ITEMS
 from agentmemory.schema.conversations import Conversation, ConversationItem
+from agentmemory.utils.validation.utils import is_valid_limit
 
 
 CONVERSATION_ID = "conversation_id"
@@ -30,12 +32,12 @@ class MongoDBConversationsSchema(LongtermMemoryConversationsSchemaInterface):
             raise ObjectNotFoundError(CONVERSATIONS, conversation_id)
         return Conversation(**data)
 
-    def list(self, query: dict = None) -> List[Conversation]:
+    def list(self, query: dict = None, limit: int = None) -> List[Conversation]:
         query = query or {}
-        return [
-            Conversation(**data)
-            for data in self._col.find(query).sort("created_at", 1)
-        ]
+        cursor = self._col.find(query).sort("created_at", -1)
+        if isinstance(limit, int) and limit > 0:
+            cursor = cursor.limit(limit)
+        return [Conversation(**doc) for doc in cursor][::-1]
 
     def create(self, conversation: Conversation) -> Conversation:
         conversation._id = ObjectId()
@@ -70,27 +72,32 @@ class MongoDBConversationItemsSchema(LongtermMemoryConversationItemsSchemaInterf
             raise ObjectNotFoundError(CONVERSATION_ITEMS, (conversation_id, item_id))
         return ConversationItem(**data)
 
-    def list(self, query: dict = None) -> List[ConversationItem]:
+    def list(self, query: dict = None, limit: int = None) -> List[ConversationItem]:
         query = query or {}
-        return [
-            ConversationItem(**data)
-            for data in self._col.find(query).sort("created_at", 1)
-        ]
+        cursor = self._col.find(query).sort("created_at", -1)
+        if is_valid_limit(limit):
+            cursor = cursor.limit(limit)
+        return [ConversationItem(**doc) for doc in cursor][::-1]
 
-    def list_by_conversation_id(self, conversation_id: str, query: dict = None) -> List[ConversationItem]:
+    def list_by_conversation_id(self, conversation_id: str, query: dict = None, limit: int = None) -> List[ConversationItem]:
         query = query or {}
         query[CONVERSATION_ID] = conversation_id
-        return self.list(query)
+        return self.list(query, limit)
 
-    def list_until_id_found(self, conversation_id: str, item_id: str) -> List[ConversationItem]:
-        return [data for data in self._list_until_id_found(conversation_id, item_id)]
+    def list_until_id_found(self, conversation_id: str, item_id: str, limit: int = None) -> List[ConversationItem]:
+        return list(self._list_until_id_found(conversation_id, item_id, limit))
 
-    def _list_until_id_found(self, conversation_id: str, item_id: str) -> Iterator[ConversationItem]:
+    def _list_until_id_found(self, conversation_id: str, item_id: str, limit: int = None) -> Iterator[ConversationItem]:
         query = {CONVERSATION_ID: conversation_id}
+        buffer = deque(maxlen=limit if is_valid_limit(limit) else None)
+
         for data in self._col.find(query).sort("created_at", 1):
-            yield ConversationItem(**data)
+            item = ConversationItem(**data)
+            buffer.append(item)
             if data[ITEM_ID] == item_id:
                 break
+
+        yield from buffer
 
     def create(self, item: ConversationItem) -> ConversationItem:
         item._id = ObjectId()

@@ -9,6 +9,7 @@ from agentmemory.connection.longterm.interface import (
 )
 from agentmemory.connection.longterm.collections import PERSONAS
 from agentmemory.schema.personas import Persona
+from agentmemory.utils.validation.utils import is_valid_limit
 
 
 PERSONA_ID = "persona_id"
@@ -31,12 +32,12 @@ class MongoDBPersonasSchema(LongtermMemoryPersonasSchemaInterface):
             raise ObjectNotFoundError(PERSONAS, name)
         return Persona(**data)
 
-    def list(self, query: dict = None) -> List[Persona]:
+    def list(self, query: dict = None, limit: int = None) -> List[Persona]:
         query = query or {}
-        return [
-            Persona(**data)
-            for data in self._col.find(query).sort("created_at", 1)
-        ]
+        cursor = self._col.find(query).sort("created_at", -1)
+        if is_valid_limit(limit):
+            cursor = cursor.limit(limit)
+        return [Persona(**doc) for doc in cursor][::-1]
 
     def create(self, persona: Persona) -> Persona:
         persona._id = ObjectId()

@@ -2,21 +2,26 @@ from agentmemory.connection.connection import AgentMemoryConnection
 from agentmemory.memory.conversations import Conversations, ConversationItems
 from agentmemory.memory.personas import Personas
 from agentmemory.memory.workflows import Workflows, WorkflowSteps
+from agentmemory.memory.cache import Cache, AutoCache
 
 
 class AgentMemory:
     def __init__(
             self,
             name: str,
-            con: AgentMemoryConnection
+            con: AgentMemoryConnection,
+            auto_caching: bool = True
     ):
         self._name = name
         self._con = con
-        self._conversations = Conversations(con=con)
-        self._conversation_items = ConversationItems(con=con)
-        self._personas = Personas(con=con)
-        self._workflows = Workflows(con=con)
-        self._workflow_steps = WorkflowSteps(con=con)
+        self._cache = Cache(con)
+
+        auto_cache = AutoCache(self._cache, use_auto_caching=auto_caching)
+        self._conversations = Conversations(con, cache=auto_cache)
+        self._conversation_items = ConversationItems(con, cache=auto_cache)
+        self._personas = Personas(con, cache=auto_cache)
+        self._workflows = Workflows(con, cache=auto_cache)
+        self._workflow_steps = WorkflowSteps(con, cache=auto_cache)
 
     @property
     def name(self) -> str:
@@ -25,6 +30,10 @@ class AgentMemory:
     @property
     def con(self) -> AgentMemoryConnection:
         return self._con
+
+    @property
+    def cache(self) -> Cache:
+        return self._cache
 
     @property
     def conversations(self) -> Conversations:

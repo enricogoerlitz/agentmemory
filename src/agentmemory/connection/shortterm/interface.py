@@ -7,7 +7,7 @@ class ShorttermMemoryInterface(ABC):
     def get(self, key: str) -> Any | None: pass
 
     @abstractmethod
-    def set(self, key: str, value: Any) -> None: pass
+    def set(self, key: str, value: Any, ex: int) -> None: pass
 
     @abstractmethod
     def clear(self, pattern: str | list[str]) -> None: pass

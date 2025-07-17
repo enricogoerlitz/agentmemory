@@ -10,6 +10,7 @@ from agentmemory.connection.longterm.interface import (
 from agentmemory.exc.errors import ObjectNotUpdatedError, ObjectNotFoundError
 from agentmemory.connection.longterm.collections import WORKFLOWS, WORKFLOW_STEPS
 from agentmemory.schema.workflows import Workflow, WorkflowStep
+from agentmemory.utils.validation.utils import is_valid_limit
 
 
 WORKFLOW_ID = "workflow_id"
@@ -27,17 +28,17 @@ class MongoDBWorkflowsSchema(LongtermMemoryWorkflowsSchemaInterface):
             raise ObjectNotFoundError(WORKFLOWS, workflow_id)
         return Workflow(**data)
 
-    def list(self, query: dict = None) -> List[Workflow]:
+    def list(self, query: dict = None, limit: int = None) -> List[Workflow]:
         query = query or {}
-        return [
-            Workflow(**data)
-            for data in self._col.find(query).sort("created_at", 1)
-        ]
+        cursor = self._col.find(query).sort("created_at", -1)
+        if is_valid_limit(limit):
+            cursor = cursor.limit(limit)
+        return [Workflow(**doc) for doc in cursor][::-1]
 
-    def list_by_conversation_item_id(self, conversation_item_id: str, query: dict = None) -> List[Workflow]:
+    def list_by_conversation_item_id(self, conversation_item_id: str, query: dict = None, limit: int = None) -> List[Workflow]:
         query = query or {}
         query["conversation_item_id"] = conversation_item_id
-        return self.list(query)
+        return self.list(query, limit)
 
     def create(self, workflow: Workflow) -> Workflow:
         workflow._id = ObjectId()
@@ -72,12 +73,12 @@ class MongoDBWorkflowStepsSchema(LongtermMemoryWorkflowStepsSchemaInterface):
             raise ObjectNotFoundError(WORKFLOW_STEPS, (workflow_id, step_id))
         return WorkflowStep(**data)
 
-    def list(self, query: dict = None) -> List[WorkflowStep]:
+    def list(self, query: dict = None, limit: int = None) -> List[WorkflowStep]:
         query = query or {}
-        return [
-            WorkflowStep(**data)
-            for data in self._col.find(query).sort("created_at", 1)
-        ]
+        cursor = self._col.find(query).sort("created_at", -1)
+        if is_valid_limit(limit):
+            cursor = cursor.limit(limit)
+        return [WorkflowStep(**doc) for doc in cursor][::-1]
 
     def list_by_workflow_id(self, workflow_id: str, query: dict = None) -> List[WorkflowStep]:
         query = query or {}

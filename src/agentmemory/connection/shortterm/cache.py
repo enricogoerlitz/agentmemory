@@ -60,6 +60,14 @@ def _create_query(query: dict = None) -> str | None:
     raise ValueError("Query must be None or an dict.")
 
 
+def _create_kwargs(kwargs: dict) -> str | None:
+    if len(kwargs.keys()) == 0:
+        return None
+
+    kwargs_ = ";".join([f"{k}:{v}" for k, v in kwargs.items()])
+    return kwargs_
+
+
 class CacheKey:
     def __init__(
             self,
@@ -67,15 +75,17 @@ class CacheKey:
             rtype: CacheRetrieveType,
             col: Collection,
             id: str | tuple[str, str] = None,
-            query: dict = None
+            query: dict = None,
+            **kwargs
     ):
         self._rtype = _create_rtype(rtype)
         self._col = _create_col(col)
         self._id = _create_id(id, rtype)
         self._q = _create_query(query)
+        self._kwargs = _create_kwargs(kwargs)
 
     def key(self) -> str:
-        keys = [self._rtype, self._col, self._id, self._q]
+        keys = [self._rtype, self._col, self._id, self._q, self._kwargs]
         key = ";".join([key for key in keys if key is not None])
         return key
 

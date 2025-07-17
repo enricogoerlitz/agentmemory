@@ -22,18 +22,33 @@ class RedisConnection(ShorttermMemoryInterface):
         )
 
     def get(self, key: str) -> Any | None:
-        json.loads("")
-        pass
+        value_str = self._client.get(key)
+        if value_str is None:
+            return None
 
-    def set(self, key: str, value: dict) -> None:
-        pass
+        value = json.loads(value_str)
+        print("FROM CACHE:", value)
+        return value
+
+    def set(self, key: str, value: dict, ex: int) -> None:
+        value_str = json.dumps(value)
+        return self._client.set(key, value_str, ex=ex)
 
     def clear(self, pattern: str | list[str]) -> None:
         if isinstance(pattern, str):
             pattern = [pattern]
-        resp = self._client.delete(*pattern)
-        print(resp)
-        # TODO...
+
+        patterns = [
+            key
+            for p in pattern
+            for key in self.keys(p)
+        ]
+
+        if len(patterns) == 0:
+            return None
+
+        print("REMOVE PATTERNS:", patterns)
+        self._client.delete(*patterns)
 
     def keys(self, pattern: str) -> list[str]:
-        pass
+        return self._client.keys(pattern)
