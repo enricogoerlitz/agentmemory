@@ -5,6 +5,7 @@ from agentmemory.connection.connection import AgentMemoryConnection
 from agentmemory.utils.dataclasses.default_factory_functions import current_iso_datetime
 from agentmemory.utils.validation.instance import check_isinstance
 from agentmemory.connection.longterm.collections import Collection
+from agentmemory.utils.transform.todict import list_to_dict
 from agentmemory.connection.shortterm.cache import (
     CacheKey,
     ClearCacheKey,
@@ -52,7 +53,7 @@ class Personas:
                 return [Persona(**cache_data) for cache_data in cache_data_list]
 
         data = self._personas.list(query, limit)
-        self._cache.set(cache_key, data.to_dict())
+        self._cache.set(cache_key, list_to_dict(data))
 
         return data
 

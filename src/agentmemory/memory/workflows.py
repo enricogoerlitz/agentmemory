@@ -12,6 +12,7 @@ from agentmemory.connection.shortterm.cache import (
     ClearCacheTransactionType
 )
 from agentmemory.memory.cache import AutoCache
+from agentmemory.utils.transform.todict import list_to_dict
 
 
 class Workflows:
@@ -40,7 +41,7 @@ class Workflows:
                 return [Workflow(**cache_data) for cache_data in cache_data_list]
 
         data = self._workflows.list(query, limit)
-        self._cache.set(cache_key, data.to_dict())
+        self._cache.set(cache_key, list_to_dict(data))
 
         return data
 
@@ -52,7 +53,7 @@ class Workflows:
                 return [Workflow(**cache_data) for cache_data in cache_data_list]
 
         data = self._workflows.list_by_conversation_item_id(conversation_item_id, query, limit)
-        self._cache.set(cache_key, data.to_dict())
+        self._cache.set(cache_key, list_to_dict(data))
 
         return data
 
@@ -138,7 +139,7 @@ class WorkflowSteps:
                 return [WorkflowStep(**cache_data) for cache_data in cache_data_list]
 
         data = self._workflow_steps.list(query, limit)
-        self._cache.set(cache_key, data.to_dict())
+        self._cache.set(cache_key, list_to_dict(data))
 
         return data
 

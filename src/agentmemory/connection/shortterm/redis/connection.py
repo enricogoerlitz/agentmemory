@@ -38,6 +38,9 @@ class RedisConnection(ShorttermMemoryInterface):
         if isinstance(pattern, str):
             pattern = [pattern]
 
+        if len(pattern) == 0:
+            return
+
         seen_keys = set()
         pipe = self._client.pipeline()
         batch_size = 1000
@@ -55,7 +58,9 @@ class RedisConnection(ShorttermMemoryInterface):
 
         if batch_count > 0:
             pipe.execute()
-        print("CLEAR KEYS:", list(seen_keys))
+
+        if len(list(seen_keys)) > 0:
+            print("CLEAR KEYS:", list(seen_keys), len(pattern))
 
     def keys(self, pattern: str) -> list[str]:
         return [key.decode("utf-8") if isinstance(key, bytes) else key
