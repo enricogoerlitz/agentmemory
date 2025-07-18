@@ -89,7 +89,12 @@ class Workflows:
         self._cache.clear(clear_keys)
 
     def delete(self, workflow_id: str, cascade: bool = False) -> None:
-        return self._workflows.delete(workflow_id, cascade)
+        self._workflows.delete(workflow_id, cascade)
+        clear_keys = self._clear_cache_keys(
+            ttype=ClearCacheTransactionType.DELETE,
+            id=workflow_id
+        )
+        self._cache.clear(clear_keys)
 
     def _cache_key(self, rtype: CacheRetrieveType, id: str = None, query: dict = None, limit: int = None) -> str:
         key = CacheKey(
