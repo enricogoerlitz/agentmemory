@@ -1,4 +1,4 @@
-from typing import Iterator, List
+from typing import List
 
 from agentmemory.schema.personas import Persona
 from agentmemory.connection.connection import AgentMemoryConnection
@@ -45,7 +45,7 @@ class Personas:
 
         return data
 
-    def list(self, query: dict = None, cache: bool = True, limit: int = None) -> Iterator[Persona]:
+    def list(self, query: dict = None, cache: bool = True, limit: int = None) -> List[Persona]:
         cache_key = self._cache_key(rtype=CacheRetrieveType.LIST, query=query, limit=limit)
         if cache:
             cache_data_list = self._cache.get(cache_key)
@@ -67,7 +67,7 @@ class Personas:
 
         return data
 
-    def update(self, persona: Persona) -> Persona:
+    def update(self, persona: Persona) -> None:
         check_isinstance(persona, Persona)
 
         persona.updated_at = current_iso_datetime()
@@ -87,8 +87,6 @@ class Personas:
             id=persona.persona_id
         )
         self._cache.clear(clear_keys)
-
-        return persona
 
     def delete(self, persona_id: str) -> None:
         self._personas.delete(persona_id)

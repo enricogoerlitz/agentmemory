@@ -1,3 +1,4 @@
+from bson import ObjectId
 from abc import ABC, abstractmethod
 from typing import Any
 
@@ -12,4 +13,7 @@ def list_to_dict(records: list[ToDictInterface]) -> list[dict]:
 
 
 def to_dict_factory(items: list[tuple[str, Any]]) -> dict:
-    return {k: str(v) for k, v in items}
+    return {
+        k: str(v) if isinstance(v, ObjectId) else v
+        for k, v in items
+    }

@@ -15,7 +15,7 @@ def pymongo_memory() -> AgentMemory:
         ),
         shortterm_con=None
     )
-    memory = AgentMemory("test-agent", con=con)
+    memory = AgentMemory("test-pymongo-agent", con=con)
     return memory
 
 
@@ -24,11 +24,11 @@ def pymongo_cache_memory() -> AgentMemory:
     con = AgentMemoryConnection(
         longterm_con=MongoDBConnection(
             mongo_uri="mongodb://localhost:27017",
-            database="test-cache-agentmemory-pymongo-redis"
+            database="test-agentmemory-pymongo-redis"
         ),
         shortterm_con=RedisConnection(
             host="localhost"
         )
     )
-    memory = AgentMemory("test-cache-agent", con=con)
+    memory = AgentMemory("test-pymongo-redis-agent", con=con)
     return memory

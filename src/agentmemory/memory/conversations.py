@@ -55,7 +55,7 @@ class Conversations:
 
         return data
 
-    def update(self, conversation: Conversation) -> Conversation:
+    def update(self, conversation: Conversation) -> None:
         check_isinstance(conversation, Conversation)
 
         conversation.updated_at = current_iso_datetime()
@@ -74,8 +74,6 @@ class Conversations:
             id=conversation.conversation_id
         )
         self._cache.clear(clear_keys)
-
-        return conversation
 
     def delete(self, conversation_id: str, cascade: bool = False) -> None:
         self._conversations.delete(conversation_id, cascade)
@@ -178,7 +176,7 @@ class ConversationItems:
 
         return data
 
-    def update(self, item: ConversationItem) -> ConversationItem:
+    def update(self, item: ConversationItem) -> None:
         check_isinstance(item, ConversationItem)
 
         item.updated_at = current_iso_datetime()
@@ -199,8 +197,6 @@ class ConversationItems:
             id=(item.conversation_id, item.item_id)
         )
         self._cache.clear(clear_keys)
-
-        return item
 
     def delete(self, conversation_id: str, item_id: str) -> None:
         self._conversation_items.delete(conversation_id, item_id)

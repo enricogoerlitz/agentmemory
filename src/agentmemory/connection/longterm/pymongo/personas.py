@@ -44,7 +44,7 @@ class MongoDBPersonasSchema(LongtermMemoryPersonasSchemaInterface):
         data = persona.to_dict()
         res = self._col.insert_one(data)
         persona._id = str(res.inserted_id)
-        return persona
+        return Persona(**persona.to_dict())
 
     def update(self, persona_id: str, update_data: dict) -> None:
         res = self._col.update_one(

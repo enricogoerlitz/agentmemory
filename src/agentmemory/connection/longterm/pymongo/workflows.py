@@ -45,7 +45,7 @@ class MongoDBWorkflowsSchema(LongtermMemoryWorkflowsSchemaInterface):
         data = workflow.to_dict()
         res = self._col.insert_one(data)
         workflow._id = str(res.inserted_id)
-        return workflow
+        return Workflow(**workflow.to_dict())
 
     def update(self, workflow_id: str, update_data: dict) -> None:
         res = self._col.update_one(
@@ -80,17 +80,17 @@ class MongoDBWorkflowStepsSchema(LongtermMemoryWorkflowStepsSchemaInterface):
             cursor = cursor.limit(limit)
         return [WorkflowStep(**doc) for doc in cursor][::-1]
 
-    def list_by_workflow_id(self, workflow_id: str, query: dict = None) -> List[WorkflowStep]:
+    def list_by_workflow_id(self, workflow_id: str, query: dict = None, limit: int = None) -> List[WorkflowStep]:
         query = query or {}
         query[WORKFLOW_ID] = workflow_id
-        return self.list(query)
+        return self.list(query, limit)
 
     def create(self, step: WorkflowStep) -> WorkflowStep:
         step._id = ObjectId()
         data = step.to_dict()
         res = self._col.insert_one(data)
         step._id = str(res.inserted_id)
-        return step
+        return WorkflowStep(**step.to_dict())
 
     def update(self, workflow_id: str, step_id: str, update_data: dict) -> None:
         res = self._col.update_one(

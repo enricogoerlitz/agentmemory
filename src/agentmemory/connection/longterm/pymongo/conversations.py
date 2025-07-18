@@ -44,7 +44,7 @@ class MongoDBConversationsSchema(LongtermMemoryConversationsSchemaInterface):
         data = conversation.to_dict()
         res = self._col.insert_one(data)
         conversation._id = str(res.inserted_id)
-        return conversation
+        return Conversation(**conversation.to_dict())
 
     def update(self, conversation_id: str, update_data: dict) -> None:
         res = self._col.update_one(
@@ -104,7 +104,7 @@ class MongoDBConversationItemsSchema(LongtermMemoryConversationItemsSchemaInterf
         data = item.to_dict()
         res = self._col.insert_one(data)
         item._id = str(res.inserted_id)
-        return item
+        return ConversationItem(**item.to_dict())
 
     def update(
             self,

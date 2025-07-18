@@ -1,4 +1,4 @@
-from typing import Iterator, List
+from typing import List
 
 from agentmemory.schema.workflows import Workflow, WorkflowStep
 from agentmemory.connection.connection import AgentMemoryConnection
@@ -33,7 +33,7 @@ class Workflows:
 
         return data
 
-    def list(self, query: dict = None, cache: bool = True, limit: int = None) -> Iterator[Workflow]:
+    def list(self, query: dict = None, cache: bool = True, limit: int = None) -> List[Workflow]:
         cache_key = self._cache_key(rtype=CacheRetrieveType.LIST, query=query, limit=limit)
         if cache:
             cache_data_list = self._cache.get(cache_key)
@@ -45,8 +45,8 @@ class Workflows:
 
         return data
 
-    def list_by_conversation_item_id(self, conversation_item_id: str, query: dict = None, cache: bool = True, limit: int = None) -> Iterator[Workflow]:
-        cache_key = self._cache_key(rtype=CacheRetrieveType.LIST_BY_ANCHOR, id=(conversation_item_id, None), query=query, limit=limit)
+    def list_by_conversation_item_id(self, conversation_item_id: str, query: dict = None, cache: bool = True, limit: int = None) -> List[Workflow]:
+        cache_key = self._cache_key(rtype=CacheRetrieveType.LIST_BY_ANCHOR, id=conversation_item_id, query=query, limit=limit)
         if cache:
             cache_data_list = self._cache.get(cache_key)
             if cache_data_list is not None:
@@ -70,7 +70,7 @@ class Workflows:
 
         return data
 
-    def update(self, workflow: Workflow) -> Workflow:
+    def update(self, workflow: Workflow) -> None:
         check_isinstance(workflow, Workflow)
 
         workflow.updated_at = current_iso_datetime()
@@ -87,8 +87,6 @@ class Workflows:
             id=workflow.workflow_id
         )
         self._cache.clear(clear_keys)
-
-        return workflow
 
     def delete(self, workflow_id: str, cascade: bool = False) -> None:
         return self._workflows.delete(workflow_id, cascade)
@@ -131,7 +129,7 @@ class WorkflowSteps:
 
         return data
 
-    def list(self, query: dict = None, cache: bool = True, limit: int = None) -> Iterator[WorkflowStep]:
+    def list(self, query: dict = None, cache: bool = True, limit: int = None) -> List[WorkflowStep]:
         cache_key = self._cache_key(rtype=CacheRetrieveType.LIST, query=query, limit=limit)
         if cache:
             cache_data_list = self._cache.get(cache_key)
@@ -143,8 +141,8 @@ class WorkflowSteps:
 
         return data
 
-    def list_by_workflow_id(self, workflow_id: str, query: dict = None, cache: bool = True, limit: int = None) -> Iterator[WorkflowStep]:
-        cache_key = self._cache_key(rtype=CacheRetrieveType.LIST_BY_ANCHOR, id=(workflow_id, None), query=query, limit=limit)
+    def list_by_workflow_id(self, workflow_id: str, query: dict = None, cache: bool = True, limit: int = None) -> List[WorkflowStep]:
+        cache_key = self._cache_key(rtype=CacheRetrieveType.LIST_BY_ANCHOR, id=workflow_id, query=query, limit=limit)
         if cache:
             cache_data_list = self._cache.get(cache_key)
             if cache_data_list is not None:
@@ -168,7 +166,7 @@ class WorkflowSteps:
 
         return data
 
-    def update(self, step: WorkflowStep) -> WorkflowStep:
+    def update(self, step: WorkflowStep) -> None:
         check_isinstance(step, WorkflowStep)
 
         step.updated_at = current_iso_datetime()
@@ -195,8 +193,6 @@ class WorkflowSteps:
         )
         self._cache.clear(clear_keys)
 
-        return step
-
     def delete(self, workflow_id: str, step_id: str) -> None:
         self._workflow_steps.delete(workflow_id, step_id)
         clear_keys = self._clear_cache_keys(
@@ -205,12 +201,13 @@ class WorkflowSteps:
         )
         self._cache.clear(clear_keys)
 
-    def _cache_key(self, rtype: CacheRetrieveType, id: str = None, query: dict = None) -> str:
+    def _cache_key(self, rtype: CacheRetrieveType, id: str = None, query: dict = None, limit: int = None) -> str:
         key = CacheKey(
             rtype=rtype,
             col=Collection.WORKFLOW_STEPS,
             id=id,
-            query=query
+            query=query,
+            limit=limit
         ).key()
         return key
 

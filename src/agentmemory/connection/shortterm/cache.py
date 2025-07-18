@@ -51,6 +51,16 @@ def _create_id(id: str | tuple[str, str] = None, rtype: CacheRetrieveType = None
     raise ValueError(f"id must be None, a string with a minimum length of 1 or a tuple with 2 entries, but was: {str(id)}")
 
 
+def _get_anchor_id(id: str | list | tuple) -> str:
+    if isinstance(id, str):
+        return id
+
+    if (isinstance(id, tuple) or isinstance(id, list)) and len(id) > 0:
+        return id[0]
+
+    raise ValueError(f"Anchor id must be str, list or tuple but was: {id}")
+
+
 def _create_query(query: dict = None) -> str | None:
     if query is None:
         return None
@@ -132,9 +142,8 @@ class ClearCacheKey:
         clear_list_anchor_key = ""
         clear_list_key = f"{rlisttype};{col}*"
         if self._is_first_id_anchor:
-            if not isinstance(self._id, tuple) or len(self._id) != 2:
-                raise ValueError("If 'is_first_id_anchor=True', the id must be a tuple with 2 entries.")
-            clear_list_anchor_key = f"{ralisttype};{col};id:{self._id[0]}*"
+            anchor_id = _get_anchor_id(self._id)
+            clear_list_anchor_key = f"{ralisttype};{col};id:{anchor_id}*"
 
         if self._ttype == ClearCacheTransactionType.CREATE:
             return [clear_list_key, clear_list_anchor_key]
