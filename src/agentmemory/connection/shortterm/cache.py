@@ -136,22 +136,25 @@ class ClearCacheKey:
         rgettype = _create_rtype(CacheRetrieveType.GET)
         rlisttype = _create_rtype(CacheRetrieveType.LIST)
         ralisttype = _create_rtype(CacheRetrieveType.LIST_BY_ANCHOR)
+        rilisttype = _create_rtype(CacheRetrieveType.LIST_UNTIL_ID_FOUND)
         id = _create_id(self._id, "?")
         col = _create_col(self._col)
 
         clear_list_anchor_key = ""
+        clear_list_until_id_found_key = ""
         clear_list_key = f"{rlisttype};{col}*"
         if self._is_first_id_anchor:
             anchor_id = _get_anchor_id(self._id)
             clear_list_anchor_key = f"{ralisttype};{col};id:{anchor_id}*"
+            clear_list_until_id_found_key = f"{rilisttype};{col};id:{anchor_id}*"
 
         if self._ttype == ClearCacheTransactionType.CREATE:
-            return [clear_list_key, clear_list_anchor_key]
+            return [clear_list_key, clear_list_anchor_key, clear_list_until_id_found_key]
 
         id = _create_id(self._id, CacheRetrieveType.GET)
         clear_get_key = f"{rgettype};{col};{id}*"
 
-        return [clear_get_key, clear_list_key, clear_list_anchor_key]
+        return [clear_get_key, clear_list_key, clear_list_anchor_key, clear_list_until_id_found_key]
 
     def __str__(self):
         return str(self.clear_keys())

@@ -35,7 +35,7 @@ class ObjectNotCreatedError(AgentMemoryError):
 
 class InstanceTypeError(AgentMemoryError):
     def __init__(self, obj: object, cls: Type):
-        obj_name = obj.__name__
-        cls_name = cls.__name__
+        obj_name = str(type(obj))
+        cls_name = str(type(cls))
         msg = f"Unexpected type: Given is a object of type '{obj_name}', but expected is a object of type '{cls_name}'"
         super().__init__(msg)
