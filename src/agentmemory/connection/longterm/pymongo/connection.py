@@ -1,5 +1,4 @@
-from pymongo import MongoClient
-from mongomock import MongoClient as MongoMockClient
+from pymongo import MongoClient, IndexModel, ASCENDING, DESCENDING
 
 from agentmemory.connection.longterm.interface import (
     LongtermMemoryConnectionInterface
@@ -15,17 +14,17 @@ from agentmemory.connection.longterm.pymongo.workflows import (
     MongoDBWorkflowsSchema,
     MongoDBWorkflowStepsSchema
 )
+from agentmemory.connection.longterm.collections import Collection
 
 
 class MongoDBConnection(LongtermMemoryConnectionInterface):
     def __init__(
             self,
             mongo_uri: str,
-            database: str,
-            is_mock_con: bool = False
+            database: str
     ):
         self._uri = mongo_uri
-        self._client = MongoClient(mongo_uri) if not is_mock_con else MongoMockClient()
+        self._client = MongoClient(mongo_uri)
         self._db = self._client[database]
 
         self._conversations = MongoDBConversationsSchema(self._db)
@@ -33,6 +32,8 @@ class MongoDBConnection(LongtermMemoryConnectionInterface):
         self._personas = MongoDBPersonasSchema(self._db)
         self._workflows = MongoDBWorkflowsSchema(self._db)
         self._workflow_steps = MongoDBWorkflowStepsSchema(self._db)
+
+        self._create_indexes()
 
     def conversations(self) -> MongoDBConversationsSchema:
         return self._conversations
@@ -48,3 +49,102 @@ class MongoDBConnection(LongtermMemoryConnectionInterface):
 
     def workflow_steps(self) -> MongoDBWorkflowStepsSchema:
         return self._workflow_steps
+
+    def _create_indexes(self) -> None:
+        if self._db is None:
+            raise ValueError("self._db is None")
+
+        self._db[Collection.CONVERSATIONS].create_indexes(
+            indexes=conversation_indexes()
+        )
+
+        self._db[Collection.CONVERSATION_ITEMS].create_indexes(
+            indexes=conversation_item_indexes()
+        )
+
+        self._db[Collection.PERSONAS].create_indexes(
+            indexes=persona_indexes()
+        )
+
+        self._db[Collection.WORKFLOWS].create_indexes(
+            indexes=workflow_indexes()
+        )
+
+        self._db[Collection.WORKFLOW_STEPS].create_indexes(
+            indexes=workflow_step_indexes()
+        )
+
+
+def conversation_indexes() -> list[IndexModel]:
+    return [
+        IndexModel(
+            [("conversation_id", ASCENDING)],
+            unique=True,
+            name="idx_conversation_id_unique"
+        ),
+        IndexModel(
+            [("created_at", DESCENDING)],
+            name="idx_created_at_desc"
+        )
+    ]
+
+
+def conversation_item_indexes() -> list[IndexModel]:
+    return [
+        IndexModel(
+            [("item_id", ASCENDING)],
+            unique=True,
+            name="idx_item_id_unique"
+        ),
+        IndexModel(
+            [("conversation_id", ASCENDING), ("created_at", DESCENDING)],
+            name="idx_conversation_id_created_at"
+        )
+    ]
+
+
+def persona_indexes() -> list[IndexModel]:
+    return [
+        IndexModel(
+            [("name", ASCENDING)],
+            unique=True,
+            name="idx_name_unique"
+        ),
+        IndexModel(
+            [("persona_id", ASCENDING)],
+            unique=True,
+            name="idx_persona_id_unique"
+        ),
+        IndexModel(
+            [("created_at", DESCENDING)],
+            name="idx_created_at_desc"
+        )
+    ]
+
+
+def workflow_indexes() -> list[IndexModel]:
+    return [
+        IndexModel(
+            [("workflow_id", ASCENDING)],
+            unique=True,
+            name="idx_workflow_id_unique"
+        ),
+        IndexModel(
+            [("conversation_item_id", ASCENDING), ("created_at", DESCENDING)],
+            name="idx_conversation_item_id_created_at"
+        )
+    ]
+
+
+def workflow_step_indexes() -> list[IndexModel]:
+    return [
+        IndexModel(
+            [("step_id", ASCENDING)],
+            unique=True,
+            name="idx_step_id_unique"
+        ),
+        IndexModel(
+            [("workflow_id", ASCENDING), ("created_at", DESCENDING)],
+            name="idx_workflow_id_created_at"
+        )
+    ]
