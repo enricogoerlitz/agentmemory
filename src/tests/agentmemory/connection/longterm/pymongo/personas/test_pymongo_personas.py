@@ -12,7 +12,7 @@ def delete_all_personas(memory: AgentMemory, cascade: bool) -> None:
 
 
 def test_create_persona(pymongo_memory: AgentMemory):
-    # Prepare
+    # --- Prepare ---
     persona = Persona(
         name=f"Name-{uuid()}",
         role="Role",
@@ -20,25 +20,25 @@ def test_create_persona(pymongo_memory: AgentMemory):
         background="Background"
     )
 
-    # Execute
-    persona_created = pymongo_memory.personas.create(persona)
+    # --- Execute ---
+    created_persona = pymongo_memory.personas.create(persona)
 
-    # Check
-    assert persona_created is not None
+    # --- Check ---
+    assert created_persona is not None
 
-    assert persona_created._id is not None
-    assert persona_created.persona_id is not None
-    assert persona_created.created_at is not None
-    assert persona_created.updated_at is not None
+    assert created_persona._id is not None
+    assert created_persona.persona_id is not None
+    assert created_persona.created_at is not None
+    assert created_persona.updated_at is not None
 
-    assert persona_created._id == persona._id
-    assert persona_created.persona_id == persona.persona_id
-    assert persona_created.name == persona.name
-    assert persona_created.role == persona.role
-    assert persona_created.goals == persona.goals
-    assert persona_created.background == persona.background
-    assert persona_created.created_at == persona.created_at
-    assert persona_created.updated_at == persona.updated_at
+    assert created_persona._id == persona._id
+    assert created_persona.persona_id == persona.persona_id
+    assert created_persona.name == persona.name
+    assert created_persona.role == persona.role
+    assert created_persona.goals == persona.goals
+    assert created_persona.background == persona.background
+    assert created_persona.created_at == persona.created_at
+    assert created_persona.updated_at == persona.updated_at
 
 
 def test_get_persona(pymongo_memory: AgentMemory):

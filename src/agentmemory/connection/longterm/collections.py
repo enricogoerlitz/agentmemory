@@ -14,6 +14,3 @@ class Collection(str, Enum):
     PERSONAS = PERSONAS
     WORKFLOWS = WORKFLOWS
     WORKFLOW_STEPS = WORKFLOW_STEPS
-
-    def members(self) -> list[str]:
-        return [member for member in self]

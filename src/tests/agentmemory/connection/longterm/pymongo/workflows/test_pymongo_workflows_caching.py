@@ -20,7 +20,7 @@ def prepare_test(memory: AgentMemory) -> None:
 
 
 def test_cache_get_workflow(pymongo_cache_memory: AgentMemory):
-    # Prepare
+    # --- Prepare ---
     prepare_test(pymongo_cache_memory)
     workflow = Workflow(
         conversation_item_id=uuid(),
@@ -30,59 +30,59 @@ def test_cache_get_workflow(pymongo_cache_memory: AgentMemory):
     )
     pymongo_cache_memory.workflows.create(workflow)
 
-    # Execute
-    workflow_get = pymongo_cache_memory.workflows.get(workflow.workflow_id)
-    workflow_cache = pymongo_cache_memory.workflows.get(workflow.workflow_id)
-    keys = pymongo_cache_memory.cache.keys("*")
+    # --- Execute ---
+    workflow_from_db = pymongo_cache_memory.workflows.get(workflow.workflow_id)
+    workflow_from_cache = pymongo_cache_memory.workflows.get(workflow.workflow_id)
+    cache_keys = pymongo_cache_memory.cache.keys("*")
 
-    # Check
-    assert len(keys) == 1
-    assert f"id:{workflow.workflow_id}" in keys[0]
-    assert f"type:{CacheRetrieveType.GET.value}" in keys[0]
-    assert f"col:{Collection.WORKFLOWS.value}" in keys[0]
+    # --- Check ---
+    assert len(cache_keys) == 1
+    assert f"id:{workflow.workflow_id}" in cache_keys[0]
+    assert f"type:{CacheRetrieveType.GET.value}" in cache_keys[0]
+    assert f"col:{Collection.WORKFLOWS.value}" in cache_keys[0]
 
-    assert workflow.user_query == workflow_get.user_query == workflow_cache.user_query
-    assert workflow.status == workflow_get.status == workflow_cache.status
+    assert workflow.user_query == workflow_from_db.user_query == workflow_from_cache.user_query
+    assert workflow.status == workflow_from_db.status == workflow_from_cache.status
     assert (
         workflow.data.get("key") ==
-        workflow_get.data.get("key") ==
-        workflow_cache.data.get("key")
+        workflow_from_db.data.get("key") ==
+        workflow_from_cache.data.get("key")
     )
 
 
 def test_cache_list_workflow(pymongo_cache_memory: AgentMemory):
-    # Prepare
+    # --- Prepare ---
     prepare_test(pymongo_cache_memory)
 
-    COUNT = 10
-    workflows: list[Workflow] = []
-    for i in range(0, COUNT):
+    item_count = 10
+    created_workflows: list[Workflow] = []
+    for i in range(item_count):
         workflow = Workflow(
             conversation_item_id=uuid(),
             user_query=f"User query-{i}",
             status=WorkflowStatus.RUNNING,
             data={"key": "value"}
         )
-        workflows.append(workflow)
+        created_workflows.append(workflow)
         pymongo_cache_memory.workflows.create(workflow)
 
-    # Execute
-    workflow_list = pymongo_cache_memory.workflows.list()
-    workflow_list_cache = pymongo_cache_memory.workflows.list()
-    keys = pymongo_cache_memory.cache.keys("*")
+    # --- Execute ---
+    workflows_from_db = pymongo_cache_memory.workflows.list()
+    workflows_from_cache = pymongo_cache_memory.workflows.list()
+    cache_keys = pymongo_cache_memory.cache.keys("*")
 
-    # Check
-    assert len(keys) == 1
-    assert f"type:{CacheRetrieveType.LIST.value}" in keys[0]
-    assert f"col:{Collection.WORKFLOWS.value}" in keys[0]
+    # --- Check ---
+    assert len(cache_keys) == 1
+    assert f"type:{CacheRetrieveType.LIST.value}" in cache_keys[0]
+    assert f"col:{Collection.WORKFLOWS.value}" in cache_keys[0]
 
-    for i, workflow in enumerate(workflows):
-        assert workflow.user_query == workflow_list[i].user_query == workflow_list_cache[i].user_query
-        assert workflow.status == workflow_list[i].status == workflow_list_cache[i].status
+    for i, workflow in enumerate(created_workflows):
+        assert workflow.user_query == workflows_from_db[i].user_query == workflows_from_cache[i].user_query
+        assert workflow.status == workflows_from_db[i].status == workflows_from_cache[i].status
         assert (
             workflow.data.get("key") ==
-            workflow_list[i].data.get("key") ==
-            workflow_list_cache[i].data.get("key")
+            workflows_from_db[i].data.get("key") ==
+            workflows_from_cache[i].data.get("key")
         )
 
 

@@ -12,8 +12,8 @@ def delete_all_workflow_steps(memory: AgentMemory, cascade: bool) -> None:
 
 
 def test_create_workflow_step(pymongo_memory: AgentMemory):
-    # Prepare
-    step = WorkflowStep(
+    # --- Prepare ---
+    workflow_step = WorkflowStep(
         workflow_id=uuid(),
         name=f"Name-{uuid()}",
         tool="tool",
@@ -21,25 +21,25 @@ def test_create_workflow_step(pymongo_memory: AgentMemory):
         status=WorkflowStatus.RUNNING
     )
 
-    # Execute
-    step_created = pymongo_memory.workflow_steps.create(step)
+    # --- Execute ---
+    created_step = pymongo_memory.workflow_steps.create(workflow_step)
 
-    # Check
-    assert step_created is not None
+    # --- Check ---
+    assert created_step is not None
 
-    assert step_created._id is not None
-    assert step_created.workflow_id is not None
-    assert step_created.created_at is not None
-    assert step_created.updated_at is not None
+    assert created_step._id is not None
+    assert created_step.workflow_id is not None
+    assert created_step.created_at is not None
+    assert created_step.updated_at is not None
 
-    assert step_created._id == step._id
-    assert step_created.workflow_id == step.workflow_id
-    assert step_created.name == step.name
-    assert step_created.tool == step.tool
-    assert step_created.status == step.status
-    assert step_created.arguments.get("arg1") == step.arguments["arg1"]
-    assert step_created.created_at == step.created_at
-    assert step_created.updated_at == step.updated_at
+    assert created_step._id == workflow_step._id
+    assert created_step.workflow_id == workflow_step.workflow_id
+    assert created_step.name == workflow_step.name
+    assert created_step.tool == workflow_step.tool
+    assert created_step.status == workflow_step.status
+    assert created_step.arguments.get("arg1") == workflow_step.arguments["arg1"]
+    assert created_step.created_at == workflow_step.created_at
+    assert created_step.updated_at == workflow_step.updated_at
 
 
 def test_get_workflow_step(pymongo_memory: AgentMemory):

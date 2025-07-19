@@ -20,137 +20,148 @@ def prepare_test(memory: AgentMemory) -> None:
 
 
 def test_cache_get_conversation_item(pymongo_cache_memory: AgentMemory):
-    # Prepare
+
+    # --- Prepare ---
     prepare_test(pymongo_cache_memory)
-    item = ConversationItem(
+
+    conversation_item = ConversationItem(
         conversation_id=uuid(),
         role="role",
         content="content",
         data={"key": "value"}
     )
-    pymongo_cache_memory.conversation_items.create(item)
+    pymongo_cache_memory.conversation_items.create(conversation_item)
 
-    # Execute
-    conversation_item_get = pymongo_cache_memory.conversation_items.get(item.conversation_id, item.item_id)
-    conversation_item_cache = pymongo_cache_memory.conversation_items.get(item.conversation_id, item.item_id)
-    keys = pymongo_cache_memory.cache.keys("*")
+    # --- Execute ---
+    # Retrieve the conversation item twice to test cache behavior
+    item_from_db = pymongo_cache_memory.conversation_items.get(
+        conversation_item.conversation_id,
+        conversation_item.item_id
+    )
+    item_from_cache = pymongo_cache_memory.conversation_items.get(
+        conversation_item.conversation_id,
+        conversation_item.item_id
+    )
+    cache_keys = pymongo_cache_memory.cache.keys("*")
 
-    # Check
-    assert len(keys) == 1
-    assert f"id:{item.conversation_id},{item.item_id}" in keys[0]
-    assert f"type:{CacheRetrieveType.GET.value}" in keys[0]
-    assert f"col:{Collection.CONVERSATION_ITEMS.value}" in keys[0]
+    # --- Check ---
+    assert len(cache_keys) == 1
+    assert f"id:{conversation_item.conversation_id},{conversation_item.item_id}" in cache_keys[0]
+    assert f"type:{CacheRetrieveType.GET.value}" in cache_keys[0]
+    assert f"col:{Collection.CONVERSATION_ITEMS.value}" in cache_keys[0]
 
-    assert item.role == conversation_item_get.role == conversation_item_cache.role
-    assert item.content == conversation_item_get.content == conversation_item_cache.content
+    assert conversation_item.role == item_from_db.role == item_from_cache.role
+    assert conversation_item.content == item_from_db.content == item_from_cache.content
     assert (
-        item.data.get("key") ==
-        conversation_item_get.data.get("key") ==
-        conversation_item_cache.data.get("key")
+        conversation_item.data.get("key") ==
+        item_from_db.data.get("key") ==
+        item_from_cache.data.get("key")
     )
 
 
 def test_cache_list_conversation_items(pymongo_cache_memory: AgentMemory):
-    # Prepare
+
+    # --- Prepare ---
     prepare_test(pymongo_cache_memory)
 
-    COUNT = 10
-    conversation_items: list[ConversationItem] = []
-    for i in range(0, COUNT):
+    item_count = 10
+    created_items: list[ConversationItem] = []
+    for i in range(item_count):
         item = ConversationItem(
             conversation_id=uuid(),
             role="role",
             content=f"content-{i}",
             data={"key": "value"}
         )
-        conversation_items.append(item)
+        created_items.append(item)
         pymongo_cache_memory.conversation_items.create(item)
 
-    # Execute
-    conversation_item_list = pymongo_cache_memory.conversation_items.list()
-    conversation_item_list_cache = pymongo_cache_memory.conversation_items.list()
-    keys = pymongo_cache_memory.cache.keys("*")
+    # --- Execute ---
+    items_from_db = pymongo_cache_memory.conversation_items.list()
+    items_from_cache = pymongo_cache_memory.conversation_items.list()
+    cache_keys = pymongo_cache_memory.cache.keys("*")
 
-    # Check
-    assert len(keys) == 1
-    assert f"type:{CacheRetrieveType.LIST.value}" in keys[0]
-    assert f"col:{Collection.CONVERSATION_ITEMS.value}" in keys[0]
+    # --- Check ---
+    assert len(cache_keys) == 1
+    assert f"type:{CacheRetrieveType.LIST.value}" in cache_keys[0]
+    assert f"col:{Collection.CONVERSATION_ITEMS.value}" in cache_keys[0]
 
-    for i, item in enumerate(conversation_items):
-        assert item.role == conversation_item_list[i].role == conversation_item_list_cache[i].role
-        assert item.content == conversation_item_list[i].content == conversation_item_list_cache[i].content
+    for i, item in enumerate(created_items):
+        assert item.role == items_from_db[i].role == items_from_cache[i].role
+        assert item.content == items_from_db[i].content == items_from_cache[i].content
         assert (
             item.data.get("key") ==
-            conversation_item_list[i].data.get("key") ==
-            conversation_item_list_cache[i].data.get("key")
+            items_from_db[i].data.get("key") ==
+            items_from_cache[i].data.get("key")
         )
 
 
 def test_cache_list_conversation_items_by_conversation_id(pymongo_cache_memory: AgentMemory):
-    # Prepare
+
+    # --- Prepare ---
     prepare_test(pymongo_cache_memory)
 
-    conv_id_1 = uuid()
-    conv_id_2 = uuid()
+    conversation_id_1 = uuid()
+    conversation_id_2 = uuid()
+    item_count = 10
+    items_conv1: list[ConversationItem] = []
+    items_conv2: list[ConversationItem] = []
 
-    COUNT = 10
-    conversation_items_1: list[ConversationItem] = []
-    conversation_items_2: list[ConversationItem] = []
-    for i in range(0, COUNT):
-        conversation_item_1 = ConversationItem(
-            conversation_id=conv_id_1,
+    for i in range(item_count):
+        item1 = ConversationItem(
+            conversation_id=conversation_id_1,
             role="role",
             content=f"content-{i}-1",
             data={"key": "value"}
         )
-        conversation_item_2 = ConversationItem(
-            conversation_id=conv_id_2,
+        item2 = ConversationItem(
+            conversation_id=conversation_id_2,
             role="role",
             content=f"content-{i}-2",
             data={"key": "value"}
         )
-        conversation_items_1.append(conversation_item_1)
-        conversation_items_2.append(conversation_item_2)
-        pymongo_cache_memory.conversation_items.create(conversation_item_1)
-        pymongo_cache_memory.conversation_items.create(conversation_item_2)
+        items_conv1.append(item1)
+        items_conv2.append(item2)
+        pymongo_cache_memory.conversation_items.create(item1)
+        pymongo_cache_memory.conversation_items.create(item2)
 
-    # Execute
-    conversation_item_list_1 = pymongo_cache_memory.conversation_items.list_by_conversation_id(conv_id_1)
-    conversation_item_list_cache_1 = pymongo_cache_memory.conversation_items.list_by_conversation_id(conv_id_1)
-    conversation_item_list_2 = pymongo_cache_memory.conversation_items.list_by_conversation_id(conv_id_2)
-    conversation_item_list_cache_2 = pymongo_cache_memory.conversation_items.list_by_conversation_id(conv_id_2)
-    keys = pymongo_cache_memory.cache.keys("*")
+    # --- Execute ---
+    items_from_db_1 = pymongo_cache_memory.conversation_items.list_by_conversation_id(conversation_id_1)
+    items_from_cache_1 = pymongo_cache_memory.conversation_items.list_by_conversation_id(conversation_id_1)
+    items_from_db_2 = pymongo_cache_memory.conversation_items.list_by_conversation_id(conversation_id_2)
+    items_from_cache_2 = pymongo_cache_memory.conversation_items.list_by_conversation_id(conversation_id_2)
+    cache_keys = pymongo_cache_memory.cache.keys("*")
 
-    # Check
-    assert len(keys) == 2
-    assert any(conv_id_1 in key for key in keys)
-    assert any(conv_id_2 in key for key in keys)
+    # --- Check ---
+    assert len(cache_keys) == 2
+    assert any(conversation_id_1 in key for key in cache_keys)
+    assert any(conversation_id_2 in key for key in cache_keys)
 
-    assert all(f"type:{CacheRetrieveType.LIST_BY_ANCHOR.value}" in key for key in keys)
-    assert all(f"col:{Collection.CONVERSATION_ITEMS.value}" in key for key in keys)
+    assert all(f"type:{CacheRetrieveType.LIST_BY_ANCHOR.value}" in key for key in cache_keys)
+    assert all(f"col:{Collection.CONVERSATION_ITEMS.value}" in key for key in cache_keys)
 
-    assert len(pymongo_cache_memory.conversation_items.list()) == COUNT * 2
-    assert len(conversation_item_list_1) == COUNT
-    assert len(conversation_item_list_2) == COUNT
-    assert len(conversation_item_list_cache_1) == COUNT
-    assert len(conversation_item_list_cache_2) == COUNT
+    assert len(pymongo_cache_memory.conversation_items.list()) == item_count * 2
+    assert len(items_from_db_1) == item_count
+    assert len(items_from_db_2) == item_count
+    assert len(items_from_cache_1) == item_count
+    assert len(items_from_cache_2) == item_count
 
-    for i, item in enumerate(conversation_items_1):
-        assert item.role == conversation_item_list_1[i].role == conversation_item_list_cache_1[i].role
-        assert item.content == conversation_item_list_1[i].content == conversation_item_list_cache_1[i].content
+    for i, item in enumerate(items_conv1):
+        assert item.role == items_from_db_1[i].role == items_from_cache_1[i].role
+        assert item.content == items_from_db_1[i].content == items_from_cache_1[i].content
         assert (
             item.data.get("key") ==
-            conversation_item_list_1[i].data.get("key") ==
-            conversation_item_list_cache_1[i].data.get("key")
+            items_from_db_1[i].data.get("key") ==
+            items_from_cache_1[i].data.get("key")
         )
 
-    for i, item in enumerate(conversation_items_2):
-        assert item.role == conversation_item_list_2[i].role == conversation_item_list_cache_2[i].role
-        assert item.content == conversation_item_list_2[i].content == conversation_item_list_cache_2[i].content
+    for i, item in enumerate(items_conv2):
+        assert item.role == items_from_db_2[i].role == items_from_cache_2[i].role
+        assert item.content == items_from_db_2[i].content == items_from_cache_2[i].content
         assert (
             item.data.get("key") ==
-            conversation_item_list_2[i].data.get("key") ==
-            conversation_item_list_cache_2[i].data.get("key")
+            items_from_db_2[i].data.get("key") ==
+            items_from_cache_2[i].data.get("key")
         )
 
 

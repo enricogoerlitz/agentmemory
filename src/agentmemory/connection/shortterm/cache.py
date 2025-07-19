@@ -9,28 +9,22 @@ class CacheRetrieveType(str, Enum):
     LIST_BY_ANCHOR = "LIST_BY_ANCHOR"
     LIST_UNTIL_ID_FOUND = "LIST_UNTIL_ID_FOUND"
 
-    def members(self) -> list[str]:
-        return [member for member in self]
-
 
 class ClearCacheTransactionType(str, Enum):
     CREATE = "create"
     UPDATE = "update"
     DELETE = "delete"
 
-    def members(self) -> list[str]:
-        return [member for member in self]
-
 
 def _create_rtype(rtype: CacheRetrieveType) -> str:
-    if rtype not in CacheRetrieveType:
-        raise ValueError(f"CacheRetrieveType value must be in '{CacheRetrieveType.members()}'")
+    if not isinstance(rtype, CacheRetrieveType):
+        raise ValueError(f"CacheRetrieveType value must be in '{CacheRetrieveType}'")
     return f"type:{rtype.value}"
 
 
 def _create_col(col: Collection) -> str:
     if col not in Collection:
-        raise ValueError(f"Collection value must be in '{Collection.members()}'")
+        raise ValueError(f"Collection value must be in '{Collection}'")
     return f"col:{col.value}"
 
 
@@ -131,7 +125,7 @@ class ClearCacheKey:
             - clear rtype:GET by ID
         """
         if self._ttype not in ClearCacheTransactionType:
-            raise ValueError(f"ClearCacheTransactionType value must be in '{ClearCacheTransactionType.members()}'")
+            raise ValueError(f"ClearCacheTransactionType value must be in '{ClearCacheTransactionType}'")
 
         rgettype = _create_rtype(CacheRetrieveType.GET)
         rlisttype = _create_rtype(CacheRetrieveType.LIST)

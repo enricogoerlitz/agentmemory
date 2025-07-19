@@ -20,7 +20,7 @@ def prepare_test(memory: AgentMemory) -> None:
 
 
 def test_cache_get_persona(pymongo_cache_memory: AgentMemory):
-    # Prepare
+    # --- Prepare ---
     prepare_test(pymongo_cache_memory)
     persona = Persona(
         name=f"Name-{uuid()}",
@@ -30,54 +30,54 @@ def test_cache_get_persona(pymongo_cache_memory: AgentMemory):
     )
     pymongo_cache_memory.personas.create(persona)
 
-    # Execute
-    persona_get = pymongo_cache_memory.personas.get(persona.persona_id)
-    persona_cache = pymongo_cache_memory.personas.get(persona.persona_id)
-    keys = pymongo_cache_memory.cache.keys("*")
+    # --- Execute ---
+    persona_from_db = pymongo_cache_memory.personas.get(persona.persona_id)
+    persona_from_cache = pymongo_cache_memory.personas.get(persona.persona_id)
+    cache_keys = pymongo_cache_memory.cache.keys("*")
 
-    # Check
-    assert len(keys) == 1
-    assert f"id:{persona.persona_id}" in keys[0]
-    assert f"type:{CacheRetrieveType.GET.value}" in keys[0]
-    assert f"col:{Collection.PERSONAS.value}" in keys[0]
+    # --- Check ---
+    assert len(cache_keys) == 1
+    assert f"id:{persona.persona_id}" in cache_keys[0]
+    assert f"type:{CacheRetrieveType.GET.value}" in cache_keys[0]
+    assert f"col:{Collection.PERSONAS.value}" in cache_keys[0]
 
-    assert persona.name == persona_get.name == persona_cache.name
-    assert persona.role == persona_get.role == persona_cache.role
-    assert persona.goals == persona_get.goals == persona_cache.goals
-    assert persona.background == persona_get.background == persona_cache.background
+    assert persona.name == persona_from_db.name == persona_from_cache.name
+    assert persona.role == persona_from_db.role == persona_from_cache.role
+    assert persona.goals == persona_from_db.goals == persona_from_cache.goals
+    assert persona.background == persona_from_db.background == persona_from_cache.background
 
 
 def test_cache_list_persona(pymongo_cache_memory: AgentMemory):
-    # Prepare
+    # --- Prepare ---
     prepare_test(pymongo_cache_memory)
 
-    COUNT = 10
-    personas: list[Persona] = []
-    for i in range(0, COUNT):
+    item_count = 10
+    created_personas: list[Persona] = []
+    for i in range(item_count):
         persona = Persona(
             name=f"Name-{uuid()}",
             role=f"Role-{i}",
             goals="Goals",
             background="Background"
         )
-        personas.append(persona)
+        created_personas.append(persona)
         pymongo_cache_memory.personas.create(persona)
 
-    # Execute
-    persona_list = pymongo_cache_memory.personas.list()
-    persona_list_cache = pymongo_cache_memory.personas.list()
-    keys = pymongo_cache_memory.cache.keys("*")
+    # --- Execute ---
+    personas_from_db = pymongo_cache_memory.personas.list()
+    personas_from_cache = pymongo_cache_memory.personas.list()
+    cache_keys = pymongo_cache_memory.cache.keys("*")
 
-    # Check
-    assert len(keys) == 1
-    assert f"type:{CacheRetrieveType.LIST.value}" in keys[0]
-    assert f"col:{Collection.PERSONAS.value}" in keys[0]
+    # --- Check ---
+    assert len(cache_keys) == 1
+    assert f"type:{CacheRetrieveType.LIST.value}" in cache_keys[0]
+    assert f"col:{Collection.PERSONAS.value}" in cache_keys[0]
 
-    for i, persona in enumerate(personas):
-        assert persona.name == persona_list[i].name == persona_list_cache[i].name
-        assert persona.role == persona_list[i].role == persona_list_cache[i].role
-        assert persona.goals == persona_list[i].goals == persona_list_cache[i].goals
-        assert persona.background == persona_list[i].background == persona_list_cache[i].background
+    for i, persona in enumerate(created_personas):
+        assert persona.name == personas_from_db[i].name == personas_from_cache[i].name
+        assert persona.role == personas_from_db[i].role == personas_from_cache[i].role
+        assert persona.goals == personas_from_db[i].goals == personas_from_cache[i].goals
+        assert persona.background == personas_from_db[i].background == personas_from_cache[i].background
 
 
 def test_cache_persona_clear_by_create(pymongo_cache_memory: AgentMemory):

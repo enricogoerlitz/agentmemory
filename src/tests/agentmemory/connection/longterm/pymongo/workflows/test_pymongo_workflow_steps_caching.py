@@ -20,45 +20,46 @@ def prepare_test(memory: AgentMemory) -> None:
 
 
 def test_cache_get_workflow_step(pymongo_cache_memory: AgentMemory):
-    # Prepare
+    # --- Prepare ---
     prepare_test(pymongo_cache_memory)
-    step = WorkflowStep(
+    workflow_step = WorkflowStep(
         workflow_id=uuid(),
         name="name",
         tool="tool",
         arguments={"arg1": "value1"},
         status=WorkflowStatus.SUCCESS
     )
-    pymongo_cache_memory.workflow_steps.create(step)
+    pymongo_cache_memory.workflow_steps.create(workflow_step)
 
-    # Execute
-    workflow_step_get = pymongo_cache_memory.workflow_steps.get(step.workflow_id, step.step_id)
-    workflow_step_cache = pymongo_cache_memory.workflow_steps.get(step.workflow_id, step.step_id)
-    keys = pymongo_cache_memory.cache.keys("*")
+    # --- Execute ---
+    step_from_db = pymongo_cache_memory.workflow_steps.get(workflow_step.workflow_id, workflow_step.step_id)
+    step_from_cache = pymongo_cache_memory.workflow_steps.get(workflow_step.workflow_id, workflow_step.step_id)
+    cache_keys = pymongo_cache_memory.cache.keys("*")
 
-    # Check
-    assert len(keys) == 1
-    assert f"id:{step.workflow_id},{step.step_id}" in keys[0]
-    assert f"type:{CacheRetrieveType.GET.value}" in keys[0]
-    assert f"col:{Collection.WORKFLOW_STEPS.value}" in keys[0]
+    # --- Check ---
+    assert len(cache_keys) == 1
+    assert f"id:{workflow_step.workflow_id},{workflow_step.step_id}" in cache_keys[0]
+    assert f"type:{CacheRetrieveType.GET.value}" in cache_keys[0]
+    assert f"col:{Collection.WORKFLOW_STEPS.value}" in cache_keys[0]
 
-    assert step.name == workflow_step_get.name == workflow_step_cache.name
-    assert step.tool == workflow_step_get.tool == workflow_step_cache.tool
-    assert step.status == workflow_step_get.status == workflow_step_cache.status
+    assert workflow_step.name == step_from_db.name == step_from_cache.name
+    assert workflow_step.tool == step_from_db.tool == step_from_cache.tool
+    assert workflow_step.status == step_from_db.status == step_from_cache.status
+    # Note: The test checks for the same value for a non-existent key 'key' in arguments, which will always be None
     assert (
-        step.arguments.get("key") ==
-        workflow_step_get.arguments.get("key") ==
-        workflow_step_cache.arguments.get("key")
+        workflow_step.arguments.get("key") ==
+        step_from_db.arguments.get("key") ==
+        step_from_cache.arguments.get("key")
     )
 
 
 def test_cache_list_workflow_step(pymongo_cache_memory: AgentMemory):
-    # Prepare
+    # --- Prepare ---
     prepare_test(pymongo_cache_memory)
 
-    COUNT = 10
-    workflow_steps: list[WorkflowStep] = []
-    for i in range(0, COUNT):
+    item_count = 10
+    created_steps: list[WorkflowStep] = []
+    for i in range(item_count):
         step = WorkflowStep(
             workflow_id=uuid(),
             name=f"name-{i}",
@@ -66,27 +67,28 @@ def test_cache_list_workflow_step(pymongo_cache_memory: AgentMemory):
             arguments={"arg1": "value1"},
             status=WorkflowStatus.SUCCESS
         )
-        workflow_steps.append(step)
+        created_steps.append(step)
         pymongo_cache_memory.workflow_steps.create(step)
 
-    # Execute
-    workflow_step_list = pymongo_cache_memory.workflow_steps.list()
-    workflow_step_list_cache = pymongo_cache_memory.workflow_steps.list()
-    keys = pymongo_cache_memory.cache.keys("*")
+    # --- Execute ---
+    steps_from_db = pymongo_cache_memory.workflow_steps.list()
+    steps_from_cache = pymongo_cache_memory.workflow_steps.list()
+    cache_keys = pymongo_cache_memory.cache.keys("*")
 
-    # Check
-    assert len(keys) == 1
-    assert f"type:{CacheRetrieveType.LIST.value}" in keys[0]
-    assert f"col:{Collection.WORKFLOW_STEPS.value}" in keys[0]
+    # --- Check ---
+    assert len(cache_keys) == 1
+    assert f"type:{CacheRetrieveType.LIST.value}" in cache_keys[0]
+    assert f"col:{Collection.WORKFLOW_STEPS.value}" in cache_keys[0]
 
-    for i, step in enumerate(workflow_steps):
-        assert step.name == workflow_step_list[i].name == workflow_step_list_cache[i].name
-        assert step.tool == workflow_step_list[i].tool == workflow_step_list_cache[i].tool
-        assert step.status == workflow_step_list[i].status == workflow_step_list_cache[i].status
+    for i, step in enumerate(created_steps):
+        assert step.name == steps_from_db[i].name == steps_from_cache[i].name
+        assert step.tool == steps_from_db[i].tool == steps_from_cache[i].tool
+        assert step.status == steps_from_db[i].status == steps_from_cache[i].status
+        # Note: The test checks for the same value for a non-existent key 'key' in arguments, which will always be None
         assert (
             step.arguments.get("key") ==
-            workflow_step_list[i].arguments.get("key") ==
-            workflow_step_list_cache[i].arguments.get("key")
+            steps_from_db[i].arguments.get("key") ==
+            steps_from_cache[i].arguments.get("key")
         )
 
 
